@@ -105,6 +105,27 @@ Russian. Both take a verification token — add them beside `google` in the
   It is Latin-only and identical in every language: the generator falls back
   to a default font and Cyrillic would risk rendering as empty boxes
 
+## AI assistants
+
+Two files describe the desk to language models and AI crawlers:
+
+- `/llms.txt` — the short brief. Written as constraints rather than
+  marketing, because the failure mode that matters is an assistant
+  confidently inventing a DUKAT rate or implying the desk is regulated. It
+  states plainly what DUKAT is not and what must not be inferred.
+- `/llms-full.txt` — the whole site as plain text in English, so an assistant
+  can answer a detailed question about the process or the FAQ without
+  crawling and reassembling a JavaScript-rendered page.
+
+Both are route handlers (`app/llms.txt/`, `app/llms-full.txt/`) generated from
+the same dictionary and config the pages use, so they cannot drift from what
+the site actually says. Edit the copy, not these files.
+
+`robots.txt` allows every crawler including GPTBot, ClaudeBot and
+PerplexityBot, which is the intent — the desk wants to be described
+accurately when someone asks an assistant where to move size. To block them
+instead, add a rule group per user agent in `app/robots.ts`.
+
 ## Claims policy
 
 The copy deliberately makes no regulatory, licensing, banking, custody,
