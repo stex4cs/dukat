@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { parseQuoteRequest } from '@/lib/quote';
+import { isTelegramConfigured, notifyTelegram } from '@/lib/notify-telegram';
 
 /**
  * Receives private quote enquiries from the site.
@@ -80,6 +81,8 @@ export async function POST(request: Request): Promise<NextResponse> {
     return NextResponse.json({ ok: false, error: 'invalid_request' }, { status: 400 });
   }
 
+  // Logged before delivery is attempted, so an enquiry is recoverable from
+  // the platform logs even if Telegram is unreachable.
   console.info(
     '[dukat] quote request',
     JSON.stringify({
@@ -91,7 +94,28 @@ export async function POST(request: Request): Promise<NextResponse> {
     }),
   );
 
-  // TO BE PROVIDED: forward `quote` to the desk here.
+  if (!isTelegramConfigured()) {
+    if (process.env.NODE_ENV === 'production') {
+      console.error(
+        '[dukat] TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID are not set — the ' +
+          'enquiry was not delivered. Set them in the deployment environment.',
+      );
+      return NextResponse.json(
+        { ok: false, error: 'delivery_unavailable' },
+        { status: 503 },
+      );
+    }
+    console.warn('[dukat] Telegram not configured; enquiry logged only.');
+    return NextResponse.json({ ok: true }, { status: 202 });
+  }
+
+  const delivered = await notifyTelegram(quote);
+  if (!delivered) {
+    return NextResponse.json(
+      { ok: false, error: 'delivery_failed' },
+      { status: 502 },
+    );
+  }
 
   return NextResponse.json({ ok: true }, { status: 202 });
 }

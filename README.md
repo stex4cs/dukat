@@ -54,11 +54,10 @@ Copy `.env.example` to `.env.local`. Both are optional in development.
 Search the repository for `TO BE PROVIDED` — every placeholder is bracketed
 and uppercase, so one grep finds them all.
 
-1. **`app/api/quote/route.ts`** — the handler validates and logs written
-   enquiries but does not deliver them anywhere yet. Forward them to a
-   mailbox, CRM or bot. **Do not launch without this**: form submissions
-   would exist only in the server log. (Telegram requests are unaffected —
-   they go straight to the chat.)
+1. **Telegram notifications** — set `TELEGRAM_BOT_TOKEN` and
+   `TELEGRAM_CHAT_ID` in the deployment environment (see below). Without
+   them the endpoint answers 503 in production rather than accepting an
+   enquiry it cannot deliver.
 2. **`lib/contact.ts`** — the footer email is still `[CONTACT EMAIL]`, the
    only placeholder a visitor can see on the homepage. Set it, or drop the
    row and leave Telegram as the single channel. Contact points render as
@@ -104,6 +103,40 @@ Russian. Both take a verification token — add them beside `google` in the
 - A generated 1200x630 Open Graph image at `app/[locale]/opengraph-image.tsx`.
   It is Latin-only and identical in every language: the generator falls back
   to a default font and Cyrillic would risk rendering as empty boxes
+
+## Telegram notifications for the written form
+
+Written quote requests are delivered to the desk by a bot. A bot is required:
+a personal Telegram account cannot send messages from a server.
+
+The bot is `@dukat_private_desk_bot`.
+
+1. Get the token from [@BotFather](https://t.me/BotFather) (`/mybots` → the
+   bot → API Token). **Never commit it.** This repository is public; the token
+   belongs in the deployment environment only. If it leaks, `/revoke` in
+   BotFather issues a new one and invalidates the old.
+2. In Vercel → Settings → Environment Variables, add `TELEGRAM_BOT_TOKEN` for
+   Production and Preview.
+3. Open the bot and press **Start**. Telegram does not let a bot message
+   someone who has never messaged it, so this step is mandatory.
+4. Read the chat id from
+   `https://api.telegram.org/bot<TOKEN>/getUpdates` — it is
+   `result[0].message.chat.id`.
+5. Add it as `TELEGRAM_CHAT_ID` and redeploy. Environment variables are read
+   at request time but a redeploy is needed for them to be attached.
+
+To have the whole desk receive enquiries rather than one person: add the bot
+to a group, post a message there, and use that chat id instead — group ids are
+negative numbers.
+
+The message carries the pair, amount, name, language, any note, and a tappable
+link back to the sender built from their chosen method (`t.me/`, `mailto:` or
+`wa.me/`), so a reply is one tap away.
+
+If delivery fails, the endpoint answers 502 and the form shows its failure
+message, which tells the visitor to contact the desk directly — the Telegram
+button is right there. The enquiry is also written to the platform log before
+delivery is attempted, so nothing is lost if Telegram is unreachable.
 
 ## AI assistants
 
