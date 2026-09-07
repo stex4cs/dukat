@@ -6,6 +6,7 @@ import { NAV_TARGETS } from '@/lib/sections';
 import { useLocale } from '@/providers/locale';
 import { EASE_LUX } from '@/lib/utils';
 import { LanguageRow } from './LanguageSwitcher';
+import { Wordmark } from './Logo';
 import { TelegramCta } from './ui/TelegramCta';
 
 /**
@@ -14,6 +15,12 @@ import { TelegramCta } from './ui/TelegramCta';
  * Behaves like a dialog: the page behind it stops scrolling, focus moves in
  * and is kept inside while it is open, Escape closes it, and focus returns to
  * whatever opened it.
+ *
+ * It sits above the header rather than below it. Underneath, the header's
+ * hamburger stayed on top of the panel's close button — a tap on the X landed
+ * on the hamburger instead, and the menu could not be dismissed. Being above
+ * also makes the dialog self-contained, so it carries its own wordmark rather
+ * than relying on the header showing through.
  */
 export function MobileMenu({
   open,
@@ -77,9 +84,10 @@ export function MobileMenu({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.35, ease: EASE_LUX }}
-          className="fixed inset-0 z-40 flex flex-col bg-ink/97 backdrop-blur-xl lg:hidden"
+          className="fixed inset-0 z-[60] flex flex-col bg-ink/97 backdrop-blur-xl lg:hidden"
         >
-          <div className="flex h-[var(--dk-header-h)] shrink-0 items-center justify-end px-6 sm:px-8">
+          <div className="flex h-[var(--dk-header-h)] shrink-0 items-center justify-between gap-6 px-6 sm:px-8">
+            <Wordmark descriptor={t.common.descriptor} />
             <button
               ref={closeRef}
               type="button"

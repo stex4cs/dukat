@@ -80,9 +80,9 @@ export function Header() {
 
             <button
               type="button"
-              aria-label={t.common.openMenu}
+              aria-label={menuOpen ? t.common.closeMenu : t.common.openMenu}
               aria-expanded={menuOpen}
-              onClick={() => setMenuOpen(true)}
+              onClick={() => setMenuOpen((open) => !open)}
               className="-mr-2 flex h-10 w-10 items-center justify-center text-bone lg:hidden"
             >
               <svg viewBox="0 0 22 12" className="h-3 w-6" aria-hidden="true">
