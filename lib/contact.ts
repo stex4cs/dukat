@@ -16,7 +16,7 @@ export const CONTACT: {
   legalEntity: string;
   jurisdiction: string;
 } = {
-  telegram: { label: '[TELEGRAM HANDLE]', href: null },
+  telegram: { label: 't.me/dukat787', href: 'https://t.me/dukat787' },
   email: { label: '[CONTACT EMAIL]', href: null },
   legalEntity: '[LEGAL ENTITY TO BE PROVIDED]',
   jurisdiction: '[JURISDICTION TO BE PROVIDED]',
