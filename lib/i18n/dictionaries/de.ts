@@ -30,7 +30,7 @@ const de: Dictionary = {
 
   nav: {
     aria: 'Hauptnavigation',
-    labels: ['Private Desk', 'Ablauf', 'Währungen', 'Über uns', 'FAQ'],
+    labels: ['Private Desk', 'Ablauf', 'Währungen', 'FAQ'],
   },
 
   hero: {
@@ -179,17 +179,6 @@ const de: Dictionary = {
       'Dieses Formular sendet eine Anfrage an den Desk. Es erstellt, bepreist oder führt keine Transaktion aus.',
   },
 
-  about: {
-    eyebrow: 'Über uns',
-    lead:
-      'DUKAT verbindet traditionelle Vorstellungen von Wert, Diskretion und persönlichem Service mit moderner Abwicklung digitaler Vermögenswerte.',
-    body: [
-      'Der Name verweist auf eine historische Münze — eine Werteinheit, die über Grenzen hinweg anerkannt und wegen ihrer Verlässlichkeit gehalten wurde, nicht wegen ihres Lärms. Der Desk folgt demselben Prinzip: wenige Werte, sorgfältig behandelt, für Kunden, die das Gespräch einer Oberfläche vorziehen.',
-    ],
-    entityLabel: 'Rechtsträger',
-    jurisdictionLabel: 'Jurisdiktion',
-  },
-
   faq: {
     eyebrow: 'Fragen',
     headline: ['Bevor Sie', 'uns schreiben.'],
@@ -200,7 +189,7 @@ const de: Dictionary = {
       },
       {
         q: 'Welche Währungen werden unterstützt?',
-        a: 'Der Desk arbeitet mit USDT, EUR und USD; die Hauptpaare sind USDT ↔ EUR und USDT ↔ USD. Anfragen zu anderen Werten oder Währungen werden im Einzelfall geprüft. [ADDITIONAL SUPPORTED ASSETS TO BE PROVIDED]',
+        a: 'Der Desk arbeitet mit USDT, EUR und USD; die Hauptpaare sind USDT ↔ EUR und USDT ↔ USD. Anfragen zu anderen Werten oder Währungen werden im Einzelfall geprüft.',
       },
       {
         q: 'Wie kommt der Kurs zustande?',
@@ -208,11 +197,11 @@ const de: Dictionary = {
       },
       {
         q: 'Wie läuft die Abwicklung ab?',
-        a: 'Abwicklungsdetails — akzeptierte Netzwerke, Zahlungsmodalitäten und Fristen — werden für jede Transaktion vor der Durchführung mit dem Desk vereinbart. [SETTLEMENT PROCEDURE TO BE PROVIDED]',
+        a: 'Abwicklungsdetails — akzeptierte Netzwerke, Zahlungsmodalitäten und Fristen — werden für jede Transaktion vor der Durchführung mit dem Desk vereinbart.',
       },
       {
         q: 'Welche Informationen werden vor einer Transaktion benötigt?',
-        a: 'Anforderungen an Onboarding und Prüfung teilt der Desk im Laufe des Angebotsprozesses mit. Bitte senden Sie keine Ausweisdokumente oder Kontodaten über diese Website. [COMPLIANCE POLICY TO BE PROVIDED] [KYC REQUIREMENTS TO BE PROVIDED]',
+        a: 'Anforderungen an Onboarding und Prüfung teilt der Desk im Laufe des Angebotsprozesses mit. Bitte senden Sie keine Ausweisdokumente oder Kontodaten über diese Website.',
       },
     ],
   },

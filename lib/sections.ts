@@ -11,19 +11,17 @@ export const SECTION = {
   howItWorks: 'how-it-works',
   currencies: 'currencies',
   quote: 'quote',
-  about: 'about',
   faq: 'faq',
   contact: 'contact',
 } as const;
 
 export type SectionId = (typeof SECTION)[keyof typeof SECTION];
 
-/** Targets for the five primary navigation labels, in order. */
+/** Targets for the four primary navigation labels, in order. */
 export const NAV_TARGETS: SectionId[] = [
   SECTION.privateDesk,
   SECTION.howItWorks,
   SECTION.currencies,
-  SECTION.about,
   SECTION.faq,
 ];
 

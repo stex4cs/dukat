@@ -39,7 +39,7 @@ const sr: Dictionary = {
 
   nav: {
     aria: 'Glavna',
-    labels: ['Privatni desk', 'Kako radi', 'Valute', 'O nama', 'Pitanja'],
+    labels: ['Privatni desk', 'Kako radi', 'Valute', 'Pitanja'],
   },
 
   hero: {
@@ -181,17 +181,6 @@ const sr: Dictionary = {
       'Ovaj obrazac šalje upit desku. Ne otvara transakciju, ne fiksira kurs i ništa ne izvršava.',
   },
 
-  about: {
-    eyebrow: 'O nama',
-    lead:
-      'DUKAT spaja staro shvatanje vrednosti, diskrecije i ličnog odnosa sa savremenim poslovanjem digitalnom imovinom.',
-    body: [
-      'Dukat je vekovima bio novčić kojem se verovalo i preko granice — držao se zbog pouzdanosti, a ne zbog priče oko njega. Desk stoji na istom principu: mali broj valuta, pažljivo vođen posao i klijenti kojima je razgovor draži od interfejsa.',
-    ],
-    entityLabel: 'Pravno lice',
-    jurisdictionLabel: 'Jurisdikcija',
-  },
-
   faq: {
     eyebrow: 'Pitanja',
     headline: ['Pre nego što', 'nam se javite.'],
@@ -202,7 +191,7 @@ const sr: Dictionary = {
       },
       {
         q: 'Koje valute radite?',
-        a: 'Desk radi sa USDT, EUR i USD; osnovni parovi su USDT ↔ EUR i USDT ↔ USD. Zahteve sa drugim valutama gledamo od slučaja do slučaja. [ADDITIONAL SUPPORTED ASSETS TO BE PROVIDED]',
+        a: 'Desk radi sa USDT, EUR i USD; osnovni parovi su USDT ↔ EUR i USDT ↔ USD. Zahteve sa drugim valutama gledamo od slučaja do slučaja.',
       },
       {
         q: 'Kako se dogovara kurs?',
@@ -210,11 +199,11 @@ const sr: Dictionary = {
       },
       {
         q: 'Kako teče realizacija?',
-        a: 'Detalji — prihvaćene mreže, način plaćanja i rokovi — dogovaraju se sa deskom za svaku transakciju pre nego što krene. [SETTLEMENT PROCEDURE TO BE PROVIDED]',
+        a: 'Detalji — prihvaćene mreže, način plaćanja i rokovi — dogovaraju se sa deskom za svaku transakciju pre nego što krene.',
       },
       {
         q: 'Šta je potrebno pre transakcije?',
-        a: 'Šta je potrebno za otvaranje odnosa i proveru, desk vam kaže tokom dogovaranja ponude. Nemojte preko sajta slati lična dokumenta ni podatke o računima. [COMPLIANCE POLICY TO BE PROVIDED] [KYC REQUIREMENTS TO BE PROVIDED]',
+        a: 'Šta je potrebno za otvaranje odnosa i proveru, desk vam kaže tokom dogovaranja ponude. Nemojte preko sajta slati lična dokumenta ni podatke o računima.',
       },
     ],
   },

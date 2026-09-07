@@ -36,7 +36,7 @@ const en = {
   nav: {
     aria: 'Primary',
     // Order matches NAV_TARGETS in lib/sections.ts.
-    labels: ['Private Desk', 'How It Works', 'Currencies', 'About', 'FAQ'],
+    labels: ['Private Desk', 'How It Works', 'Currencies', 'FAQ'],
   },
 
   hero: {
@@ -180,17 +180,6 @@ const en = {
       'This form sends an enquiry to the desk. It does not create, price or execute a transaction.',
   },
 
-  about: {
-    eyebrow: 'About',
-    lead:
-      'DUKAT combines traditional ideas of value, discretion and personal service with modern digital asset settlement.',
-    body: [
-      'The name refers to a historical coin — a unit of value recognised across borders and held for its reliability rather than its noise. The desk is built on the same principle: a small number of assets, handled carefully, for clients who prefer a conversation to an interface.',
-    ],
-    entityLabel: 'Legal entity',
-    jurisdictionLabel: 'Jurisdiction',
-  },
-
   faq: {
     eyebrow: 'Questions',
     headline: ['Before you', 'get in touch.'],
@@ -201,7 +190,7 @@ const en = {
       },
       {
         q: 'Which currencies are supported?',
-        a: 'The desk works with USDT, EUR and USD, with USDT ↔ EUR and USDT ↔ USD as the primary pairs. Requests involving other assets or currencies are considered individually. [ADDITIONAL SUPPORTED ASSETS TO BE PROVIDED]',
+        a: 'The desk works with USDT, EUR and USD, with USDT ↔ EUR and USDT ↔ USD as the primary pairs. Requests involving other assets or currencies are considered individually.',
       },
       {
         q: 'How is the rate agreed?',
@@ -209,11 +198,11 @@ const en = {
       },
       {
         q: 'How does settlement work?',
-        a: 'Settlement details — accepted networks, payment arrangements and timing — are agreed with the desk for each transaction before it proceeds. [SETTLEMENT PROCEDURE TO BE PROVIDED]',
+        a: 'Settlement details — accepted networks, payment arrangements and timing — are agreed with the desk for each transaction before it proceeds.',
       },
       {
         q: 'What information is required before a transaction?',
-        a: 'Onboarding and verification requirements are communicated by the desk during the quote process. Please do not send identity documents or account details through this website. [COMPLIANCE POLICY TO BE PROVIDED] [KYC REQUIREMENTS TO BE PROVIDED]',
+        a: 'Onboarding and verification requirements are communicated by the desk during the quote process. Please do not send identity documents or account details through this website.',
       },
     ],
   },

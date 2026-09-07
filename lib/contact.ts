@@ -13,13 +13,9 @@ export type ContactPoint = {
 export const CONTACT: {
   telegram: ContactPoint;
   email: ContactPoint;
-  legalEntity: string;
-  jurisdiction: string;
 } = {
   telegram: { label: 't.me/dukat787', href: 'https://t.me/dukat787' },
   email: { label: '[CONTACT EMAIL]', href: null },
-  legalEntity: '[LEGAL ENTITY TO BE PROVIDED]',
-  jurisdiction: '[JURISDICTION TO BE PROVIDED]',
 };
 
 /** Year shown in the footer copyright line. */

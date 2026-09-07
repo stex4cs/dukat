@@ -27,7 +27,7 @@ export function Faq() {
       <div className="shell py-28 lg:py-40">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
           <SectionHeader
-            index="06"
+            index="05"
             eyebrow={t.faq.eyebrow}
             lines={t.faq.headline}
             className="lg:col-span-4"

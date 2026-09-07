@@ -4,7 +4,6 @@ import { PrivateDesk } from '@/components/PrivateDesk';
 import { HowItWorks } from '@/components/HowItWorks';
 import { Currencies } from '@/components/Currencies';
 import { QuoteForm } from '@/components/QuoteForm';
-import { About } from '@/components/About';
 import { Faq } from '@/components/Faq';
 import { FinalCta } from '@/components/FinalCta';
 import { Footer } from '@/components/Footer';
@@ -26,7 +25,6 @@ export default function HomePage() {
         <HowItWorks />
         <Currencies />
         <QuoteForm />
-        <About />
         <Faq />
         <FinalCta />
       </main>

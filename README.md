@@ -59,16 +59,13 @@ and uppercase, so one grep finds them all.
    mailbox, CRM or bot. **Do not launch without this**: form submissions
    would exist only in the server log. (Telegram requests are unaffected —
    they go straight to the chat.)
-2. **`lib/contact.ts`** — email, legal entity and jurisdiction are still
-   placeholders. Telegram is set. Contact points render as plain text until
-   `href` is set, so no dead links ship in the meantime.
-3. **`lib/i18n/dictionaries/*.ts`** — FAQ answers about settlement and
-   compliance carry placeholders. Bracketed placeholders stay in English in
-   all four languages on purpose: they are notes for the desk, not visitor
-   copy.
-4. **`app/[locale]/legal/[doc]/page.tsx`** — Terms, Privacy and Compliance
+2. **`lib/contact.ts`** — the footer email is still `[CONTACT EMAIL]`, the
+   only placeholder a visitor can see on the homepage. Set it, or drop the
+   row and leave Telegram as the single channel. Contact points render as
+   plain text until `href` is set, so no dead links ship in the meantime.
+3. **`app/[locale]/legal/[doc]/page.tsx`** — Terms, Privacy and Compliance
    are on-brand placeholder pages, excluded from indexing until real text
-   lands.
+   lands. They are linked from the footer and the consent checkbox.
 
 ## Claims policy
 
