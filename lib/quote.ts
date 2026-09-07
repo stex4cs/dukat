@@ -1,4 +1,5 @@
 import { CURRENCIES, type CurrencyCode } from './currencies';
+import { isCountry, type CountryCode } from './countries';
 
 /**
  * The private quote request.
@@ -21,6 +22,9 @@ export type QuoteRequest = {
   want: CurrencyCode;
   amount: number;
   name: string;
+  /** Where the client is based — the desk needs it for eligibility. */
+  city: string;
+  country: CountryCode;
   method: ContactMethod;
   contact: string;
   message?: string;
@@ -67,6 +71,12 @@ export function parseQuoteRequest(payload: unknown): QuoteRequest | null {
     return null;
   }
   if (typeof name !== 'string' || name.trim().length === 0) return null;
+
+  const city = body.city;
+  const country = body.country;
+  if (typeof city !== 'string' || city.trim().length === 0) return null;
+  if (typeof country !== 'string' || !isCountry(country)) return null;
+
   if (typeof method !== 'string' || !isContactMethod(method)) return null;
   if (typeof contact !== 'string' || contact.trim().length === 0) return null;
   if (method === 'email' && !isEmail(contact)) return null;
@@ -79,6 +89,8 @@ export function parseQuoteRequest(payload: unknown): QuoteRequest | null {
     want: want as CurrencyCode,
     amount,
     name: name.trim().slice(0, 120),
+    city: city.trim().slice(0, 120),
+    country,
     method,
     contact: contact.trim().slice(0, 160),
     message: message ? message.slice(0, 2000) : undefined,

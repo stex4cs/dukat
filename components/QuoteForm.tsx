@@ -11,6 +11,8 @@ import {
   type ReactNode,
 } from 'react';
 import { CONTACT_METHODS, isEmail, submitQuoteRequest, type ContactMethod } from '@/lib/quote';
+import { COUNTRIES, type CountryCode } from '@/lib/countries';
+import type { Locale } from '@/lib/i18n/config';
 import { otherCurrencies, type CurrencyCode } from '@/lib/currencies';
 import { amountToInput, formatAmount, formatAmountInput, parseAmountInput } from '@/lib/format';
 import { SECTION } from '@/lib/sections';
@@ -18,12 +20,21 @@ import { useLocale } from '@/providers/locale';
 import { useQuoteDraft } from '@/providers/quote-draft';
 import { cn } from '@/lib/utils';
 import { CurrencySelect } from './ui/CurrencySelect';
+import { Listbox } from './ui/Listbox';
 import { Cta } from './ui/Cta';
 import { TelegramCta } from './ui/TelegramCta';
 import { Reveal } from './ui/Reveal';
 import { SectionHeader } from './ui/SectionHeader';
 
-type FieldKey = 'pair' | 'size' | 'name' | 'contact' | 'consent';
+/** Best guess from the page language; the visitor can always change it. */
+const DEFAULT_COUNTRY: Record<Locale, CountryCode> = {
+  sr: 'RS',
+  de: 'DE',
+  ru: 'OTHER',
+  en: 'OTHER',
+};
+
+type FieldKey = 'pair' | 'size' | 'name' | 'city' | 'contact' | 'consent';
 
 /**
  * The private quote request.
@@ -41,6 +52,8 @@ export function QuoteForm() {
   const [want, setWant] = useState<CurrencyCode>(draft.want);
   const [sizeRaw, setSizeRaw] = useState(() => amountToInput(draft.amount, locale));
   const [name, setName] = useState('');
+  const [city, setCity] = useState('');
+  const [country, setCountry] = useState<CountryCode>(() => DEFAULT_COUNTRY[locale]);
   const [method, setMethod] = useState<ContactMethod>('telegram');
   const [contact, setContact] = useState('');
   const [message, setMessage] = useState('');
@@ -52,6 +65,7 @@ export function QuoteForm() {
 
   const sizeRef = useRef<HTMLInputElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
+  const cityRef = useRef<HTMLInputElement>(null);
   const contactRef = useRef<HTMLInputElement>(null);
   const consentRef = useRef<HTMLInputElement>(null);
   const seenRevision = useRef(revision);
@@ -83,6 +97,7 @@ export function QuoteForm() {
     if (have === want) next.pair = t.quoteForm.errors.samePair;
     if (!(amount > 0)) next.size = t.quoteForm.errors.size;
     if (name.trim().length === 0) next.name = t.quoteForm.errors.name;
+    if (city.trim().length === 0) next.city = t.quoteForm.errors.city;
     if (contact.trim().length === 0) {
       next.contact = t.quoteForm.errors.contact;
     } else if (method === 'email' && !isEmail(contact)) {
@@ -103,6 +118,7 @@ export function QuoteForm() {
       const focusOrder: Array<[FieldKey, HTMLElement | null]> = [
         ['size', sizeRef.current],
         ['name', nameRef.current],
+        ['city', cityRef.current],
         ['contact', contactRef.current],
         ['consent', consentRef.current],
       ];
@@ -118,6 +134,8 @@ export function QuoteForm() {
         want,
         amount,
         name: name.trim(),
+        city: city.trim(),
+        country,
         method,
         contact: contact.trim(),
         message: message.trim() || undefined,
@@ -133,6 +151,7 @@ export function QuoteForm() {
     setStatus('idle');
     setErrors({});
     setName('');
+    setCity('');
     setContact('');
     setMessage('');
     setConsent(false);
@@ -181,6 +200,9 @@ export function QuoteForm() {
                     <dt className="eyebrow">{t.quoteForm.success.summary}</dt>
                     <dd className="tnum mt-4 font-sans text-sm text-bone">
                       {formatAmount(amount, locale, 0)} {have} → {want}
+                    </dd>
+                    <dd className="mt-2 font-sans text-sm text-ash">
+                      {city}, {t.quoteForm.countries[country]}
                     </dd>
                     <dd className="mt-2 font-sans text-sm text-ash">
                       {t.quoteForm.methods[method]} · {contact}
@@ -269,6 +291,43 @@ export function QuoteForm() {
                     {errors.name && (
                       <FieldError id={`${ids}-name-error`}>{errors.name}</FieldError>
                     )}
+                  </div>
+
+                  <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor={`${ids}-city`} className="eyebrow block">
+                        {t.quoteForm.fields.city}
+                      </label>
+                      <input
+                        ref={cityRef}
+                        id={`${ids}-city`}
+                        value={city}
+                        onChange={(event) => setCity(event.target.value)}
+                        autoComplete="address-level2"
+                        placeholder={t.quoteForm.placeholders.city}
+                        aria-invalid={Boolean(errors.city)}
+                        aria-describedby={errors.city ? `${ids}-city-error` : undefined}
+                        className={cn(inputClass, 'mt-3')}
+                      />
+                      {errors.city && (
+                        <FieldError id={`${ids}-city-error`}>{errors.city}</FieldError>
+                      )}
+                    </div>
+
+                    <div>
+                      <span className="eyebrow block">{t.quoteForm.fields.country}</span>
+                      <Listbox
+                        value={country}
+                        onChange={setCountry}
+                        options={COUNTRIES.map((code) => ({
+                          value: code,
+                          label: t.quoteForm.countries[code],
+                        }))}
+                        label={t.quoteForm.fields.country}
+                        /* Matches the input height beside it. */
+                        className="mt-3 [&>button]:py-[0.875rem]"
+                      />
+                    </div>
                   </div>
 
                   <fieldset className="mt-6">

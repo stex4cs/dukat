@@ -1,3 +1,4 @@
+import { COUNTRY_NAMES_EN } from './countries';
 import type { QuoteRequest } from './quote';
 
 /**
@@ -57,6 +58,7 @@ export function formatQuoteMessage(request: QuoteRequest): string {
     `<b>${formatAmount(request.amount)} ${request.have}</b> → <b>${request.want}</b>`,
     '',
     `Name: ${escapeHtml(request.name)}`,
+    `Based in: ${escapeHtml(request.city)}, ${COUNTRY_NAMES_EN[request.country]}`,
     `Via: ${request.method} — ${link ? `<a href="${link}">${contact}</a>` : contact}`,
     `Language: ${escapeHtml(request.locale)}`,
   ];
