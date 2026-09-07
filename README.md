@@ -24,7 +24,7 @@ runtime, so a static-only host (Apache, plain shared hosting) will not work.
 
 ## Telegram is the primary action
 
-Every leading call to action on the site opens `t.me/dukat787`. The chat
+Every leading call to action on the site opens `t.me/dukatdesk`. The chat
 handle lives in `lib/telegram.ts` — change it there and it changes everywhere.
 
 The hero panel composes the pair and amount into a draft message using

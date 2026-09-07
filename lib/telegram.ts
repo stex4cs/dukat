@@ -7,7 +7,7 @@
  *
  * https://core.telegram.org/api/links
  */
-export const TELEGRAM_USERNAME = 'dukat787';
+export const TELEGRAM_USERNAME = 'dukatdesk';
 
 export const TELEGRAM_URL = `https://t.me/${TELEGRAM_USERNAME}`;
 

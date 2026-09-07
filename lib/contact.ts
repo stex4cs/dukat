@@ -1,3 +1,5 @@
+import { TELEGRAM_URL, TELEGRAM_USERNAME } from './telegram';
+
 /**
  * Desk contact details.
  *
@@ -14,7 +16,7 @@ export const CONTACT: {
   telegram: ContactPoint;
   email: ContactPoint;
 } = {
-  telegram: { label: 't.me/dukat787', href: 'https://t.me/dukat787' },
+  telegram: { label: `t.me/${TELEGRAM_USERNAME}`, href: TELEGRAM_URL },
   email: { label: '[CONTACT EMAIL]', href: null },
 };
 
