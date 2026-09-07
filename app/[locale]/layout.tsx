@@ -11,6 +11,7 @@ import {
   type Locale,
 } from '@/lib/i18n/config';
 import { alternatesFor, canonicalFor, SITE_URL } from '@/lib/site';
+import { jsonLd, organizationSchema } from '@/lib/structured-data';
 import { LocaleProvider } from '@/providers/locale';
 import { QuoteDraftProvider } from '@/providers/quote-draft';
 
@@ -74,6 +75,12 @@ export async function generateMetadata({
       icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
       apple: [{ url: '/favicon.svg' }],
     },
+    // Google Search Console, HTML-tag method. The same token also works as
+    // the DNS TXT record for a domain property, which covers apex and www at
+    // once — see the README.
+    verification: {
+      google: 'QnvbgSe3OzkdKfF-PM589v0nOTu-SRdAVq-kkoX2Spc',
+    },
     openGraph: {
       type: 'website',
       siteName: 'DUKAT',
@@ -81,6 +88,9 @@ export async function generateMetadata({
       description: t.meta.description,
       url: canonicalFor(locale),
       locale: localeMeta[locale].intl.replace('-', '_'),
+      alternateLocale: locales
+        .filter((code) => code !== locale)
+        .map((code) => localeMeta[code].intl.replace('-', '_')),
     },
     twitter: {
       card: 'summary_large_image',
@@ -117,6 +127,13 @@ export default async function LocaleLayout({
         <LocaleProvider locale={locale} dictionary={dictionary}>
           <QuoteDraftProvider>{children}</QuoteDraftProvider>
         </LocaleProvider>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: jsonLd(organizationSchema(locale, dictionary)),
+          }}
+        />
       </body>
     </html>
   );

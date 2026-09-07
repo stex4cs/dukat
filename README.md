@@ -67,6 +67,44 @@ and uppercase, so one grep finds them all.
    are on-brand placeholder pages, excluded from indexing until real text
    lands. They are linked from the footer and the consent checkbox.
 
+## Search Console
+
+The site is verified with the HTML-tag method already — the token is in
+`app/[locale]/layout.tsx` under `verification.google`.
+
+Prefer a **Domain property** over a URL-prefix property. It covers apex and
+`www`, http and https, and every subdomain in one place, which matters here
+because both hosts resolve. Add this TXT record on the apex in Vercel →
+Domains → dukatdesk.com → DNS Records:
+
+```
+Type: TXT   Name: @
+Value: google-site-verification=QnvbgSe3OzkdKfF-PM589v0nOTu-SRdAVq-kkoX2Spc
+```
+
+Then submit `https://dukatdesk.com/sitemap.xml` under Sitemaps.
+
+Worth adding for this audience: Bing Webmaster Tools (imports from Search
+Console in one click) and Yandex Webmaster, since a quarter of the copy is
+Russian. Both take a verification token — add them beside `google` in the
+`verification` block.
+
+## What is already in place for search
+
+- Per-locale `title`, `description`, canonical and full hreflang alternates
+  including `x-default`
+- `sitemap.xml` listing all four locale homepages with their alternates.
+  `lastModified` is a constant, bumped by hand — using the build date would
+  claim a content change on every deploy
+- `robots.txt` allows the legal routes on purpose. They carry `noindex`, and
+  a disallowed page can still be indexed URL-only because the crawler never
+  fetches it and so never reads the noindex
+- Organization JSON-LD on every page, FAQPage JSON-LD on the homepage. Both
+  contain only what the page itself states
+- A generated 1200x630 Open Graph image at `app/[locale]/opengraph-image.tsx`.
+  It is Latin-only and identical in every language: the generator falls back
+  to a default font and Cyrillic would risk rendering as empty boxes
+
 ## Claims policy
 
 The copy deliberately makes no regulatory, licensing, banking, custody,

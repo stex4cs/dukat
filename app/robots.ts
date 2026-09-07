@@ -6,8 +6,10 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      // Legal routes are placeholders until DUKAT supplies the text.
-      disallow: ['/api/', '/*/legal/'],
+      // The legal routes are noindex. They are deliberately NOT disallowed:
+      // a blocked page can still be indexed URL-only, because the crawler
+      // never fetches it and so never sees the noindex.
+      disallow: ['/api/'],
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
   };
