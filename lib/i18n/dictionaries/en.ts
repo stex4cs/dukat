@@ -58,9 +58,17 @@ const en = {
     swap: 'Swap the two currencies',
     selectCurrency: 'Select currency',
     note:
-      'The desk prices each transaction individually. Send your pair and amount, and a price comes back in chat.',
+      'The desk prices each transaction individually and the rate is all-in. Send your pair and amount, and a price comes back in chat.',
     draft: 'DUKAT quote request',
     alt: 'Or send a written request',
+  },
+
+  pricing: {
+    eyebrow: 'Pricing',
+    headline: ['The best fee', 'on the market.'],
+    body:
+      'Everything is in the rate. Nothing is added afterwards — the amount you are quoted is the amount you receive.',
+    items: ['No commission', 'No network fees', 'No bank charges'],
   },
 
   privateDesk: {
@@ -191,6 +199,10 @@ const en = {
       {
         q: 'Which currencies are supported?',
         a: 'The desk works with USDT, EUR and USD, with USDT ↔ EUR and USDT ↔ USD as the primary pairs. Requests involving other assets or currencies are considered individually.',
+      },
+      {
+        q: 'What do you charge?',
+        a: 'Everything is in the rate. There is no commission, and no network or banking costs are added afterwards — the amount quoted to you is the amount you receive.',
       },
       {
         q: 'How is the rate agreed?',

@@ -53,9 +53,17 @@ const de: Dictionary = {
     swap: 'Die beiden Währungen tauschen',
     selectCurrency: 'Währung wählen',
     note:
-      'Der Desk bepreist jede Transaktion einzeln. Senden Sie Paar und Betrag — den Preis erhalten Sie im Chat.',
+      'Der Desk bepreist jede Transaktion einzeln, und der Kurs ist final — ohne Zusätze. Senden Sie Paar und Betrag, den Preis erhalten Sie im Chat.',
     draft: 'DUKAT — Angebotsanfrage',
     alt: 'Oder schriftlich anfragen',
+  },
+
+  pricing: {
+    eyebrow: 'Preis',
+    headline: ['Eng kalkuliert.', 'Alles im Kurs.'],
+    body:
+      'Der Kurs enthält alles. Nachträglich kommt nichts hinzu — der angebotene Betrag ist der Betrag, den Sie erhalten.',
+    items: ['Keine Provision', 'Keine Netzwerkkosten', 'Keine Bankgebühren'],
   },
 
   privateDesk: {
@@ -190,6 +198,10 @@ const de: Dictionary = {
       {
         q: 'Welche Währungen werden unterstützt?',
         a: 'Der Desk arbeitet mit USDT, EUR und USD; die Hauptpaare sind USDT ↔ EUR und USDT ↔ USD. Anfragen zu anderen Werten oder Währungen werden im Einzelfall geprüft.',
+      },
+      {
+        q: 'Was berechnen Sie?',
+        a: 'Alles ist im Kurs enthalten. Es gibt keine Provision, und es kommen keine Netzwerk- oder Bankkosten hinzu — der angebotene Betrag ist der Betrag, den Sie erhalten.',
       },
       {
         q: 'Wie kommt der Kurs zustande?',

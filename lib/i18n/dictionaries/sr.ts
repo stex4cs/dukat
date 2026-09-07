@@ -61,9 +61,17 @@ const sr: Dictionary = {
     swap: 'Zamenite valutama mesta',
     selectCurrency: 'Izaberite valutu',
     note:
-      'Desk kotira svaku transakciju posebno. Pošaljite par i iznos — kurs dobijate u poruci.',
+      'Desk kotira svaku transakciju posebno, a kurs je konačan — bez dodataka. Pošaljite par i iznos, kurs dobijate u poruci.',
     draft: 'DUKAT — zahtev za ponudu',
     alt: 'Ili pošaljite pisani zahtev',
+  },
+
+  pricing: {
+    eyebrow: 'Cena',
+    headline: ['Najbolji fee', 'na tržištu.'],
+    body:
+      'Sve je u kursu. Ništa se ne dodaje posle — iznos iz ponude je iznos koji dobijate.',
+    items: ['Bez provizije', 'Bez mrežnih troškova', 'Bez bankarskih troškova'],
   },
 
   privateDesk: {
@@ -192,6 +200,10 @@ const sr: Dictionary = {
       {
         q: 'Koje valute radite?',
         a: 'Desk radi sa USDT, EUR i USD; osnovni parovi su USDT ↔ EUR i USDT ↔ USD. Zahteve sa drugim valutama gledamo od slučaja do slučaja.',
+      },
+      {
+        q: 'Šta naplaćujete?',
+        a: 'Sve je u kursu. Nema provizije, niti se posle dodaju mrežni ili bankarski troškovi — iznos iz ponude je iznos koji dobijate.',
       },
       {
         q: 'Kako se dogovara kurs?',

@@ -1,5 +1,6 @@
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
+import { Pricing } from '@/components/Pricing';
 import { PrivateDesk } from '@/components/PrivateDesk';
 import { HowItWorks } from '@/components/HowItWorks';
 import { Currencies } from '@/components/Currencies';
@@ -21,6 +22,7 @@ export default function HomePage() {
       <Header />
       <main id="main">
         <Hero />
+        <Pricing />
         <PrivateDesk />
         <HowItWorks />
         <Currencies />
