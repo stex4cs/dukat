@@ -33,12 +33,13 @@ const sr: Dictionary = {
     closeMenu: 'Zatvorite meni',
     menu: 'Meni',
     close: 'Zatvorite',
+    telegram: 'Pišite na Telegramu',
     optional: 'Nije obavezno',
   },
 
   nav: {
     aria: 'Glavna',
-    labels: ['Privatni desk', 'Kako radi', 'Kursevi', 'O nama', 'Pitanja'],
+    labels: ['Privatni desk', 'Kako radi', 'Valute', 'O nama', 'Pitanja'],
   },
 
   hero: {
@@ -50,32 +51,19 @@ const sr: Dictionary = {
     ctaPrimary: 'Zatražite ponudu',
     ctaSecondary: 'Kako radi',
     assetsAria: 'Valute sa kojima desk radi',
-    scrollHint: 'Niže',
   },
 
-  calculator: {
+  panel: {
     title: 'Privatna ponuda',
-    youSend: 'Šaljete',
-    youReceive: 'Dobijate',
+    have: 'Imam',
+    want: 'Želim',
+    amount: 'Iznos',
     swap: 'Zamenite valutama mesta',
     selectCurrency: 'Izaberite valutu',
-    amountAria: 'Iznos koji šaljete',
-    receiveAria: 'Indikativni iznos koji dobijate',
-    indicativeRate: 'Indikativni kurs',
     note:
-      'Kurs je isključivo indikativan. Konačan kurs desk potvrđuje pre realizacije.',
-    cta: 'Zatražite ovu ponudu',
-    minHint: 'Unesite iznos da biste videli indikativnu ponudu.',
-  },
-
-  trust: {
-    aria: 'Kako desk radi',
-    items: [
-      'Privatna realizacija',
-      'Direktan kontakt',
-      'Jasan kurs',
-      'Veliki iznosi',
-    ],
+      'Desk kotira svaku transakciju posebno. Pošaljite par i iznos — kurs dobijate u poruci.',
+    draft: 'DUKAT — zahtev za ponudu',
+    alt: 'Ili pošaljite pisani zahtev',
   },
 
   privateDesk: {
@@ -124,23 +112,14 @@ const sr: Dictionary = {
   },
 
   assets: {
-    eyebrow: 'Valute i kursevi',
+    eyebrow: 'Valute',
     headline: ['Jedan desk.', 'Tri valute.'],
-    body:
-      'Desk radi sa malim brojem valuta umesto sa dugom listom. USDT se kotira i prema evru i prema dolaru.',
     flowAria: 'Evro, Tether i dolar kotiraju se jedan prema drugom',
     cards: [
       { code: 'USDT', name: 'Tether', note: 'Digitalno sredstvo' },
       { code: 'EUR', name: 'Evro', note: 'Fiat valuta' },
       { code: 'USD', name: 'Američki dolar', note: 'Fiat valuta' },
     ],
-    board: {
-      title: 'Indikativni kursevi',
-      pair: 'Par',
-      rate: 'Kurs',
-      note:
-        'Referentne vrednosti, za orijentaciju. Nisu ponuda i ne obavezuju dok ih desk ne potvrdi za konkretnu transakciju.',
-    },
   },
 
   quoteForm: {
@@ -148,6 +127,8 @@ const sr: Dictionary = {
     headline: ['Vaša transakcija.', 'Vaš kurs.'],
     body:
       'Recite nam šta menjate i u kom iznosu. Desk pregleda zahtev i javlja vam kurs i sledeće korake.',
+    telegramLead:
+      'Najbrže je preko Telegrama. Obrazac je tu ako vam je lakše da pišete.',
     fields: {
       have: 'Imam',
       want: 'Želim',
@@ -206,7 +187,6 @@ const sr: Dictionary = {
       'DUKAT spaja staro shvatanje vrednosti, diskrecije i ličnog odnosa sa savremenim poslovanjem digitalnom imovinom.',
     body: [
       'Dukat je vekovima bio novčić kojem se verovalo i preko granice — držao se zbog pouzdanosti, a ne zbog priče oko njega. Desk stoji na istom principu: mali broj valuta, pažljivo vođen posao i klijenti kojima je razgovor draži od interfejsa.',
-      'Iza svakog zahteva stoji čovek. Kurs se daje, proverava i potvrđuje pre nego što se bilo šta pomeri, a isti predstavnik vodi transakciju od prve poruke do realizacije.',
     ],
     entityLabel: 'Pravno lice',
     jurisdictionLabel: 'Jurisdikcija',
@@ -225,16 +205,8 @@ const sr: Dictionary = {
         a: 'Desk radi sa USDT, EUR i USD; osnovni parovi su USDT ↔ EUR i USDT ↔ USD. Zahteve sa drugim valutama gledamo od slučaja do slučaja. [ADDITIONAL SUPPORTED ASSETS TO BE PROVIDED]',
       },
       {
-        q: 'Kako se traži ponuda?',
-        a: 'Popunite obrazac za privatnu ponudu: valute, iznos i način na koji želite da vas kontaktiramo. Predstavnik deska pregleda zahtev i javlja vam kurs i sledeće korake.',
-      },
-      {
-        q: 'Da li je prikazani kurs konačan?',
-        a: 'Nije. Kursevi na sajtu su indikativni i služe za orijentaciju. Kurs važi tek kada ga desk izričito potvrdi za konkretnu transakciju.',
-      },
-      {
-        q: 'Koje iznose radite?',
-        a: 'Desk je namenjen velikim transakcijama koje se dogovaraju pojedinačno, a ne sitnim iznosima. [MINIMUM AND MAXIMUM TRANSACTION SIZES TO BE PROVIDED]',
+        q: 'Kako se dogovara kurs?',
+        a: 'Na sajtu ne objavljujemo kurseve. Desk daje kurs za vaš par i iznos, a on važi tek kada ga desk potvrdi za tu transakciju.',
       },
       {
         q: 'Kako teče realizacija?',
@@ -250,8 +222,7 @@ const sr: Dictionary = {
   finalCta: {
     headline: ['Pokrenite kapital.', 'Diskretno.'],
     body: 'Razgovarajte direktno sa DUKAT privatnim deskom.',
-    primary: 'Zatražite ponudu',
-    secondary: 'Javite se desku',
+    secondary: 'Pošaljite pisani zahtev',
   },
 
   footer: {
@@ -259,13 +230,13 @@ const sr: Dictionary = {
     legalHeading: 'Dokumenti',
     contactHeading: 'Kontakt',
     languageHeading: 'Jezik',
-    navLabels: ['Privatni desk', 'Kursevi', 'Kako radi', 'Pitanja', 'Kontakt'],
+    navLabels: ['Privatni desk', 'Valute', 'Kako radi', 'Pitanja', 'Kontakt'],
     legalLabels: ['Uslovi', 'Privatnost', 'Usklađenost'],
     telegram: 'Telegram',
     email: 'Imejl',
     rights: 'Sva prava zadržana.',
     disclaimer:
-      'Transakcije digitalnom imovinom nose rizik. Kursevi na ovom sajtu su indikativni, osim kada ih desk izričito potvrdi. Usluge zavise od uslova podobnosti, važećih propisa i zahteva DUKAT-a za otvaranje odnosa i usklađenost.',
+      'Transakcije digitalnom imovinom nose rizik. Kurseve ne objavljujemo na sajtu: kurs daje desk i on važi samo kada je izričito potvrđen za konkretnu transakciju. Usluge zavise od uslova podobnosti, važećih propisa i zahteva DUKAT-a za otvaranje odnosa i usklađenost.',
   },
 
   legal: {

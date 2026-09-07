@@ -1,9 +1,8 @@
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
-import { TrustStrip } from '@/components/TrustStrip';
 import { PrivateDesk } from '@/components/PrivateDesk';
 import { HowItWorks } from '@/components/HowItWorks';
-import { Assets } from '@/components/Assets';
+import { Currencies } from '@/components/Currencies';
 import { QuoteForm } from '@/components/QuoteForm';
 import { About } from '@/components/About';
 import { Faq } from '@/components/Faq';
@@ -13,9 +12,9 @@ import { Footer } from '@/components/Footer';
 /**
  * The DUKAT homepage.
  *
- * Section order follows the reading order a visitor needs: what the desk is,
- * what an amount comes to, how it works, what is traded, how to ask, who is
- * behind it, and what is still open.
+ * Every primary action opens the Telegram chat — that is where the desk
+ * quotes and where a transaction is actually arranged. The written form is
+ * kept as an alternative for people who would rather not use Telegram.
  */
 export default function HomePage() {
   return (
@@ -23,10 +22,9 @@ export default function HomePage() {
       <Header />
       <main id="main">
         <Hero />
-        <TrustStrip />
         <PrivateDesk />
         <HowItWorks />
-        <Assets />
+        <Currencies />
         <QuoteForm />
         <About />
         <Faq />

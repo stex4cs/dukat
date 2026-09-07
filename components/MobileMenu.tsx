@@ -2,11 +2,11 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
-import { NAV_TARGETS, SECTION } from '@/lib/sections';
+import { NAV_TARGETS } from '@/lib/sections';
 import { useLocale } from '@/providers/locale';
 import { EASE_LUX } from '@/lib/utils';
 import { LanguageRow } from './LanguageSwitcher';
-import { Cta } from './ui/Cta';
+import { TelegramCta } from './ui/TelegramCta';
 
 /**
  * Full-height navigation panel for small screens.
@@ -128,9 +128,7 @@ export function MobileMenu({
           </nav>
 
           <div className="shrink-0 space-y-6 px-6 pb-10 sm:px-8">
-            <Cta href={`#${SECTION.quote}`} onClick={onClose} className="w-full">
-              {t.common.requestQuote}
-            </Cta>
+            <TelegramCta label={t.common.telegram} className="w-full py-5" />
             <div className="flex items-center justify-between">
               <span className="eyebrow">{t.common.language}</span>
               <LanguageRow onNavigate={onClose} />

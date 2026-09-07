@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
-import { CURRENCIES, type CurrencyCode } from '@/lib/rates';
+import { CURRENCIES, type CurrencyCode } from '@/lib/currencies';
 import { cn } from '@/lib/utils';
 
 /**

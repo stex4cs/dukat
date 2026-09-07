@@ -1,4 +1,4 @@
-import { CURRENCIES, type CurrencyCode } from './rates';
+import { CURRENCIES, type CurrencyCode } from './currencies';
 
 /**
  * The private quote request.
@@ -26,8 +26,6 @@ export type QuoteRequest = {
   message?: string;
   /** Language the request was written in, so the desk can reply in kind. */
   locale: string;
-  /** What the visitor was shown at the moment of sending, for context only. */
-  indicative?: { rate: number; receive: number };
 };
 
 export type QuoteResponse = { ok: true } | { ok: false; error: string };

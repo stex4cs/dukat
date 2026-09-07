@@ -11,15 +11,15 @@ import {
   type ReactNode,
 } from 'react';
 import { CONTACT_METHODS, isEmail, submitQuoteRequest, type ContactMethod } from '@/lib/quote';
-import { convert, getRate, otherCurrencies, type CurrencyCode } from '@/lib/rates';
+import { otherCurrencies, type CurrencyCode } from '@/lib/currencies';
 import { amountToInput, formatAmount, formatAmountInput, parseAmountInput } from '@/lib/format';
-import { useRates } from '@/lib/use-rates';
 import { SECTION } from '@/lib/sections';
 import { useLocale } from '@/providers/locale';
 import { useQuoteDraft } from '@/providers/quote-draft';
 import { cn } from '@/lib/utils';
 import { CurrencySelect } from './ui/CurrencySelect';
 import { Cta } from './ui/Cta';
+import { TelegramCta } from './ui/TelegramCta';
 import { Reveal } from './ui/Reveal';
 import { SectionHeader } from './ui/SectionHeader';
 
@@ -34,7 +34,6 @@ type FieldKey = 'pair' | 'size' | 'name' | 'contact' | 'consent';
  */
 export function QuoteForm() {
   const { locale, t } = useLocale();
-  const rates = useRates();
   const { draft, revision } = useQuoteDraft();
   const ids = useId();
 
@@ -68,8 +67,6 @@ export function QuoteForm() {
   }, [revision, draft, locale]);
 
   const amount = parseAmountInput(sizeRaw, locale);
-  const rate = getRate(rates, have, want);
-  const receive = convert(rates, amount, have, want);
 
   function chooseHave(next: CurrencyCode) {
     setHave(next);
@@ -125,7 +122,6 @@ export function QuoteForm() {
         contact: contact.trim(),
         message: message.trim() || undefined,
         locale,
-        indicative: { rate, receive },
       },
       { honeypot },
     );
@@ -156,7 +152,11 @@ export function QuoteForm() {
               <p className="max-w-prose2 font-sans text-sm leading-relaxed text-ash sm:text-[0.9375rem]">
                 {t.quoteForm.body}
               </p>
-              <p className="mt-9 max-w-prose2 border-l border-champagne/40 pl-5 font-sans text-xs leading-relaxed text-ash">
+              <p className="mt-9 max-w-prose2 font-sans text-sm leading-relaxed text-bone/80">
+                {t.quoteForm.telegramLead}
+              </p>
+              <TelegramCta label={t.common.telegram} className="mt-6" />
+              <p className="mt-10 max-w-prose2 border-l border-champagne/40 pl-5 font-sans text-xs leading-relaxed text-ash">
                 {t.quoteForm.notice}
               </p>
             </Reveal>
@@ -246,15 +246,8 @@ export function QuoteForm() {
                         {have}
                       </span>
                     </div>
-                    {errors.size ? (
+                    {errors.size && (
                       <FieldError id={`${ids}-size-error`}>{errors.size}</FieldError>
-                    ) : (
-                      amount > 0 && (
-                        <p className="tnum mt-3 font-sans text-xs text-ash">
-                          {t.calculator.indicativeRate}: {formatAmount(receive, locale, 2)}{' '}
-                          {want}
-                        </p>
-                      )
                     )}
                   </div>
 

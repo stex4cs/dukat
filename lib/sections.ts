@@ -9,7 +9,7 @@ export const SECTION = {
   top: 'top',
   privateDesk: 'private-desk',
   howItWorks: 'how-it-works',
-  rates: 'rates',
+  currencies: 'currencies',
   quote: 'quote',
   about: 'about',
   faq: 'faq',
@@ -22,7 +22,7 @@ export type SectionId = (typeof SECTION)[keyof typeof SECTION];
 export const NAV_TARGETS: SectionId[] = [
   SECTION.privateDesk,
   SECTION.howItWorks,
-  SECTION.rates,
+  SECTION.currencies,
   SECTION.about,
   SECTION.faq,
 ];
@@ -30,7 +30,7 @@ export const NAV_TARGETS: SectionId[] = [
 /** Targets for the five footer navigation labels, in order. */
 export const FOOTER_NAV_TARGETS: SectionId[] = [
   SECTION.privateDesk,
-  SECTION.rates,
+  SECTION.currencies,
   SECTION.howItWorks,
   SECTION.faq,
   SECTION.quote,

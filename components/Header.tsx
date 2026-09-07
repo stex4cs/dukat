@@ -3,13 +3,13 @@
 import { motion, useScroll, useSpring } from 'framer-motion';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { NAV_TARGETS, SECTION } from '@/lib/sections';
+import { NAV_TARGETS } from '@/lib/sections';
 import { useLocale } from '@/providers/locale';
 import { cn } from '@/lib/utils';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { MobileMenu } from './MobileMenu';
 import { Wordmark } from './Logo';
-import { Cta } from './ui/Cta';
+import { TelegramCta } from './ui/TelegramCta';
 
 /**
  * Sticky header. Transparent over the hero, then settles into a blurred dark
@@ -72,13 +72,11 @@ export function Header() {
           <div className="flex items-center gap-2 sm:gap-4">
             <LanguageSwitcher className="hidden sm:block" />
 
-            <Cta
-              href={`#${SECTION.quote}`}
-              variant="secondary"
-              className="hidden px-5 py-3 lg:inline-flex"
-            >
-              {t.common.requestQuote}
-            </Cta>
+            <TelegramCta
+              label={t.common.telegram}
+              size="compact"
+              className="hidden lg:inline-flex"
+            />
 
             <button
               type="button"

@@ -24,12 +24,13 @@ const de: Dictionary = {
     closeMenu: 'Menü schließen',
     menu: 'Menü',
     close: 'Schließen',
+    telegram: 'Über Telegram anfragen',
     optional: 'Optional',
   },
 
   nav: {
     aria: 'Hauptnavigation',
-    labels: ['Private Desk', 'Ablauf', 'Kurse', 'Über uns', 'FAQ'],
+    labels: ['Private Desk', 'Ablauf', 'Währungen', 'Über uns', 'FAQ'],
   },
 
   hero: {
@@ -42,32 +43,19 @@ const de: Dictionary = {
     ctaPrimary: 'Angebot anfragen',
     ctaSecondary: 'Ablauf',
     assetsAria: 'Unterstützte Werte',
-    scrollHint: 'Scrollen',
   },
 
-  calculator: {
+  panel: {
     title: 'Privates Angebot',
-    youSend: 'Sie senden',
-    youReceive: 'Sie erhalten',
-    swap: 'Sende- und Empfangswährung tauschen',
+    have: 'Ich habe',
+    want: 'Ich möchte',
+    amount: 'Betrag',
+    swap: 'Die beiden Währungen tauschen',
     selectCurrency: 'Währung wählen',
-    amountAria: 'Zu sendender Betrag',
-    receiveAria: 'Indikativer Empfangsbetrag',
-    indicativeRate: 'Indikativer Kurs',
     note:
-      'Ausschließlich indikative Preisangabe. Der endgültige Kurs wird vor der Ausführung vom Desk bestätigt.',
-    cta: 'Dieses Angebot anfragen',
-    minHint: 'Geben Sie einen Betrag ein, um ein indikatives Angebot zu sehen.',
-  },
-
-  trust: {
-    aria: 'Wie der Desk arbeitet',
-    items: [
-      'Private Ausführung',
-      'Direkte Kommunikation',
-      'Transparente Angebote',
-      'Desk für große Volumina',
-    ],
+      'Der Desk bepreist jede Transaktion einzeln. Senden Sie Paar und Betrag — den Preis erhalten Sie im Chat.',
+    draft: 'DUKAT — Angebotsanfrage',
+    alt: 'Oder schriftlich anfragen',
   },
 
   privateDesk: {
@@ -122,23 +110,14 @@ const de: Dictionary = {
   },
 
   assets: {
-    eyebrow: 'Werte und Kurse',
+    eyebrow: 'Währungen',
     headline: ['Ein Desk.', 'Drei Kernwerte.'],
-    body:
-      'Der Desk konzentriert sich auf wenige Instrumente statt auf ein langes Listing. USDT wird gegen Abwicklung in Euro und in US-Dollar quotiert.',
     flowAria: 'Euro, Tether und US-Dollar werden gegeneinander quotiert',
     cards: [
       { code: 'USDT', name: 'Tether', note: 'Digitaler Abwicklungswert' },
       { code: 'EUR', name: 'Euro', note: 'Fiat-Abwicklungswährung' },
       { code: 'USD', name: 'US-Dollar', note: 'Fiat-Abwicklungswährung' },
     ],
-    board: {
-      title: 'Indikative Kurse',
-      pair: 'Paar',
-      rate: 'Kurs',
-      note:
-        'Referenzwerte zur Orientierung. Sie sind kein Angebot und nicht verbindlich, solange der Desk sie nicht für eine konkrete Transaktion bestätigt.',
-    },
   },
 
   quoteForm: {
@@ -146,6 +125,8 @@ const de: Dictionary = {
     headline: ['Ihre Transaktion.', 'Ihr Angebot.'],
     body:
       'Sagen Sie uns, was Sie tauschen möchten und in welchem Umfang. Unser Desk prüft die Anfrage und meldet sich mit dem geltenden Angebot und den nächsten Schritten.',
+    telegramLead:
+      'Am schnellsten geht es über Telegram. Das Formular ist da, wenn Sie lieber schreiben.',
     fields: {
       have: 'Ich habe',
       want: 'Ich möchte',
@@ -204,7 +185,6 @@ const de: Dictionary = {
       'DUKAT verbindet traditionelle Vorstellungen von Wert, Diskretion und persönlichem Service mit moderner Abwicklung digitaler Vermögenswerte.',
     body: [
       'Der Name verweist auf eine historische Münze — eine Werteinheit, die über Grenzen hinweg anerkannt und wegen ihrer Verlässlichkeit gehalten wurde, nicht wegen ihres Lärms. Der Desk folgt demselben Prinzip: wenige Werte, sorgfältig behandelt, für Kunden, die das Gespräch einer Oberfläche vorziehen.',
-      'Jede Anfrage bearbeitet ein Mensch. Der Preis wird angeboten, geprüft und bestätigt, bevor etwas bewegt wird, und derselbe Ansprechpartner begleitet die Transaktion von der ersten Nachricht bis zur Abwicklung.',
     ],
     entityLabel: 'Rechtsträger',
     jurisdictionLabel: 'Jurisdiktion',
@@ -220,23 +200,15 @@ const de: Dictionary = {
       },
       {
         q: 'Welche Währungen werden unterstützt?',
-        a: 'Der Desk konzentriert sich auf USDT, EUR und USD; die Hauptpaare sind USDT ↔ EUR und USDT ↔ USD. Anfragen zu anderen Werten oder Währungen können im Einzelfall geprüft werden. [ADDITIONAL SUPPORTED ASSETS TO BE PROVIDED]',
+        a: 'Der Desk arbeitet mit USDT, EUR und USD; die Hauptpaare sind USDT ↔ EUR und USDT ↔ USD. Anfragen zu anderen Werten oder Währungen werden im Einzelfall geprüft. [ADDITIONAL SUPPORTED ASSETS TO BE PROVIDED]',
       },
       {
-        q: 'Wie fordere ich ein Angebot an?',
-        a: 'Füllen Sie das Formular für ein privates Angebot mit Währungen, Betrag und bevorzugtem Kontaktweg aus. Ein Desk-Vertreter prüft die Anfrage und antwortet direkt mit dem geltenden Angebot und den nächsten Schritten.',
-      },
-      {
-        q: 'Ist der angezeigte Kurs endgültig?',
-        a: 'Nein. Die auf dieser Website angezeigten Kurse sind indikativ und dienen ausschließlich der Orientierung. Ein Kurs gilt erst, wenn der Desk ihn für eine konkrete Transaktion ausdrücklich bestätigt.',
-      },
-      {
-        q: 'Welche Transaktionsgrößen unterstützen Sie?',
-        a: 'Der Desk ist auf große, einzeln bepreiste Transaktionen ausgelegt und nicht auf kleine Retail-Beträge. [MINIMUM AND MAXIMUM TRANSACTION SIZES TO BE PROVIDED]',
+        q: 'Wie kommt der Kurs zustande?',
+        a: 'Auf dieser Website werden keine Kurse veröffentlicht. Der Desk nennt einen Preis für Ihr Paar und Ihren Betrag, und dieser gilt erst, wenn der Desk ihn für diese Transaktion bestätigt.',
       },
       {
         q: 'Wie läuft die Abwicklung ab?',
-        a: 'Abwicklungsdetails — einschließlich akzeptierter Netzwerke, Zahlungsmodalitäten und Fristen — werden für jede Transaktion vor der Durchführung mit dem Desk vereinbart. [SETTLEMENT PROCEDURE TO BE PROVIDED]',
+        a: 'Abwicklungsdetails — akzeptierte Netzwerke, Zahlungsmodalitäten und Fristen — werden für jede Transaktion vor der Durchführung mit dem Desk vereinbart. [SETTLEMENT PROCEDURE TO BE PROVIDED]',
       },
       {
         q: 'Welche Informationen werden vor einer Transaktion benötigt?',
@@ -248,8 +220,7 @@ const de: Dictionary = {
   finalCta: {
     headline: ['Werte bewegen.', 'Privat.'],
     body: 'Sprechen Sie direkt mit dem DUKAT Private Desk.',
-    primary: 'Angebot anfragen',
-    secondary: 'Desk kontaktieren',
+    secondary: 'Schriftlich anfragen',
   },
 
   footer: {
@@ -257,13 +228,13 @@ const de: Dictionary = {
     legalHeading: 'Rechtliches',
     contactHeading: 'Kontakt',
     languageHeading: 'Sprache',
-    navLabels: ['Private Desk', 'Kurse', 'Ablauf', 'FAQ', 'Kontakt'],
+    navLabels: ['Private Desk', 'Währungen', 'Ablauf', 'FAQ', 'Kontakt'],
     legalLabels: ['Bedingungen', 'Datenschutz', 'Compliance'],
     telegram: 'Telegram',
     email: 'E-Mail',
     rights: 'Alle Rechte vorbehalten.',
     disclaimer:
-      'Transaktionen mit digitalen Vermögenswerten sind mit Risiken verbunden. Auf dieser Website angezeigte Angebote sind indikativ, sofern sie nicht ausdrücklich vom Desk bestätigt werden. Die Leistungen unterliegen der Eignung, dem anwendbaren Recht sowie den Onboarding- und Compliance-Anforderungen von DUKAT.',
+      'Transaktionen mit digitalen Vermögenswerten sind mit Risiken verbunden. Hier werden keine Kurse veröffentlicht: den Preis nennt der Desk, und er gilt nur, wenn er für eine konkrete Transaktion ausdrücklich bestätigt wird. Die Leistungen unterliegen der Eignung, dem anwendbaren Recht sowie den Onboarding- und Compliance-Anforderungen von DUKAT.',
   },
 
   legal: {

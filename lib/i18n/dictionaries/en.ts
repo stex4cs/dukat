@@ -29,13 +29,14 @@ const en = {
     closeMenu: 'Close menu',
     menu: 'Menu',
     close: 'Close',
+    telegram: 'Request on Telegram',
     optional: 'Optional',
   },
 
   nav: {
     aria: 'Primary',
     // Order matches NAV_TARGETS in lib/sections.ts.
-    labels: ['Private Desk', 'How It Works', 'Rates', 'About', 'FAQ'],
+    labels: ['Private Desk', 'How It Works', 'Currencies', 'About', 'FAQ'],
   },
 
   hero: {
@@ -47,32 +48,19 @@ const en = {
     ctaPrimary: 'Request a quote',
     ctaSecondary: 'How it works',
     assetsAria: 'Supported assets',
-    scrollHint: 'Scroll',
   },
 
-  calculator: {
+  panel: {
     title: 'Private quote',
-    youSend: 'You send',
-    youReceive: 'You receive',
-    swap: 'Swap send and receive currencies',
+    have: 'I have',
+    want: 'I want',
+    amount: 'Amount',
+    swap: 'Swap the two currencies',
     selectCurrency: 'Select currency',
-    amountAria: 'Amount to send',
-    receiveAria: 'Indicative amount received',
-    indicativeRate: 'Indicative rate',
     note:
-      'Indicative pricing only. Final rate is confirmed by the desk before execution.',
-    cta: 'Request this quote',
-    minHint: 'Enter an amount to see an indicative quote.',
-  },
-
-  trust: {
-    aria: 'How the desk operates',
-    items: [
-      'Private execution',
-      'Direct communication',
-      'Transparent quotes',
-      'Large-volume desk',
-    ],
+      'The desk prices each transaction individually. Send your pair and amount, and a price comes back in chat.',
+    draft: 'DUKAT quote request',
+    alt: 'Or send a written request',
   },
 
   privateDesk: {
@@ -122,23 +110,14 @@ const en = {
   },
 
   assets: {
-    eyebrow: 'Assets and rates',
+    eyebrow: 'Currencies',
     headline: ['One desk.', 'Three core assets.'],
-    body:
-      'The desk concentrates on a small set of instruments rather than a long listing. USDT is quoted against both euro and US dollar settlement.',
     flowAria: 'Euro, Tether and US dollar are quoted against one another',
     cards: [
       { code: 'USDT', name: 'Tether', note: 'Digital settlement asset' },
       { code: 'EUR', name: 'Euro', note: 'Fiat settlement currency' },
       { code: 'USD', name: 'US Dollar', note: 'Fiat settlement currency' },
     ],
-    board: {
-      title: 'Indicative rates',
-      pair: 'Pair',
-      rate: 'Rate',
-      note:
-        'Reference values for orientation. They are not an offer and are not binding until confirmed by the desk for a specific transaction.',
-    },
   },
 
   quoteForm: {
@@ -146,6 +125,8 @@ const en = {
     headline: ['Your transaction.', 'Your quote.'],
     body:
       'Tell us what you want to exchange and the amount. Our desk will review the request and contact you with the applicable quote and next steps.',
+    telegramLead:
+      'The fastest route is Telegram. The form is here if you would rather write.',
     fields: {
       have: 'I have',
       want: 'I want',
@@ -205,7 +186,6 @@ const en = {
       'DUKAT combines traditional ideas of value, discretion and personal service with modern digital asset settlement.',
     body: [
       'The name refers to a historical coin — a unit of value recognised across borders and held for its reliability rather than its noise. The desk is built on the same principle: a small number of assets, handled carefully, for clients who prefer a conversation to an interface.',
-      'Every request is handled by a person. Pricing is quoted, reviewed and confirmed before anything moves, and the same representative stays with the transaction from the first message through to settlement.',
     ],
     entityLabel: 'Legal entity',
     jurisdictionLabel: 'Jurisdiction',
@@ -221,23 +201,15 @@ const en = {
       },
       {
         q: 'Which currencies are supported?',
-        a: 'The desk focuses on USDT, EUR and USD, with USDT ↔ EUR and USDT ↔ USD as the primary pairs. Requests involving other assets or currencies may be considered individually. [ADDITIONAL SUPPORTED ASSETS TO BE PROVIDED]',
+        a: 'The desk works with USDT, EUR and USD, with USDT ↔ EUR and USDT ↔ USD as the primary pairs. Requests involving other assets or currencies are considered individually. [ADDITIONAL SUPPORTED ASSETS TO BE PROVIDED]',
       },
       {
-        q: 'How do I request a quote?',
-        a: 'Complete the private quote form with the currencies, the amount and your preferred contact method. A desk representative reviews the request and responds directly with the applicable quote and the next steps.',
-      },
-      {
-        q: 'Is the displayed rate final?',
-        a: 'No. Rates shown on this website are indicative and provided for orientation only. A rate becomes applicable once the desk expressly confirms it for a specific transaction.',
-      },
-      {
-        q: 'What transaction sizes do you support?',
-        a: 'The desk is built around large, individually quoted transactions rather than small retail amounts. [MINIMUM AND MAXIMUM TRANSACTION SIZES TO BE PROVIDED]',
+        q: 'How is the rate agreed?',
+        a: 'No rates are published on this website. The desk quotes a price for your specific pair and amount, and that price applies only once the desk confirms it for that transaction.',
       },
       {
         q: 'How does settlement work?',
-        a: 'Settlement details — including accepted networks, payment arrangements and timing — are agreed with the desk for each transaction before it proceeds. [SETTLEMENT PROCEDURE TO BE PROVIDED]',
+        a: 'Settlement details — accepted networks, payment arrangements and timing — are agreed with the desk for each transaction before it proceeds. [SETTLEMENT PROCEDURE TO BE PROVIDED]',
       },
       {
         q: 'What information is required before a transaction?',
@@ -249,8 +221,7 @@ const en = {
   finalCta: {
     headline: ['Move value.', 'Privately.'],
     body: 'Speak directly with the DUKAT Private Desk.',
-    primary: 'Request a quote',
-    secondary: 'Contact the desk',
+    secondary: 'Send a written request',
   },
 
   footer: {
@@ -259,14 +230,14 @@ const en = {
     contactHeading: 'Contact',
     languageHeading: 'Language',
     // Order matches FOOTER_NAV_TARGETS in lib/sections.ts.
-    navLabels: ['Private Desk', 'Rates', 'How It Works', 'FAQ', 'Contact'],
+    navLabels: ['Private Desk', 'Currencies', 'How It Works', 'FAQ', 'Contact'],
     // Order matches LEGAL_DOCS in lib/sections.ts.
     legalLabels: ['Terms', 'Privacy', 'Compliance'],
     telegram: 'Telegram',
     email: 'Email',
     rights: 'All rights reserved.',
     disclaimer:
-      'Digital asset transactions involve risk. Quotes shown on this website are indicative unless expressly confirmed by the desk. Services are subject to eligibility, applicable law and DUKAT’s onboarding and compliance requirements.',
+      'Digital asset transactions involve risk. No rates are published here: a price is quoted by the desk and applies only when expressly confirmed for a specific transaction. Services are subject to eligibility, applicable law and DUKAT’s onboarding and compliance requirements.',
   },
 
   legal: {

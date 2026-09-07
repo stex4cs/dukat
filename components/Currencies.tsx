@@ -1,51 +1,35 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
-import { PRIMARY_PAIRS, getRate, type CurrencyCode } from '@/lib/rates';
-import { formatRate } from '@/lib/format';
-import { useRates } from '@/lib/use-rates';
+import type { CurrencyCode } from '@/lib/currencies';
 import { SECTION } from '@/lib/sections';
 import { useLocale } from '@/providers/locale';
 import { Reveal } from './ui/Reveal';
 import { SectionHeader } from './ui/SectionHeader';
 
-/** Display order puts USDT between the two fiat currencies it is quoted against. */
+/** USDT sits between the two fiat currencies it is quoted against. */
 const DISPLAY_ORDER: CurrencyCode[] = ['EUR', 'USDT', 'USD'];
 
-const SYMBOL: Record<CurrencyCode, string> = {
-  EUR: '€',
-  USDT: '₮',
-  USD: '$',
-};
+const SYMBOL: Record<CurrencyCode, string> = { EUR: '€', USDT: '₮', USD: '$' };
 
 /**
- * The three instruments the desk quotes, and an indicative rate board.
- * Rates come from the same table as the hero widget, so the two can never
- * disagree.
+ * The three instruments, and nothing else. No rate board: pricing is quoted
+ * by the desk per transaction and is never published here.
  */
-export function Assets() {
-  const { locale, t } = useLocale();
-  const rates = useRates();
+export function Currencies() {
+  const { t } = useLocale();
 
   const cards = DISPLAY_ORDER.map(
     (code) => t.assets.cards.find((card) => card.code === code)!,
   );
 
   return (
-    <section id={SECTION.rates} className="shell py-28 lg:py-40">
-      <div className="grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-16">
-        <SectionHeader
-          index="03"
-          eyebrow={t.assets.eyebrow}
-          lines={t.assets.headline}
-          className="lg:col-span-7"
-        />
-        <Reveal delay={0.12} className="lg:col-span-5">
-          <p className="max-w-prose2 font-sans text-sm leading-relaxed text-ash sm:text-[0.9375rem]">
-            {t.assets.body}
-          </p>
-        </Reveal>
-      </div>
+    <section id={SECTION.currencies} className="shell py-28 lg:py-40">
+      <SectionHeader
+        index="03"
+        eyebrow={t.assets.eyebrow}
+        lines={t.assets.headline}
+      />
 
       <div className="relative mt-20 lg:mt-28">
         <ul
@@ -78,57 +62,11 @@ export function Assets() {
         <ExchangeMark className="left-1/3" />
         <ExchangeMark className="left-2/3" delay={1.4} />
       </div>
-
-      <Reveal delay={0.1} className="mt-16">
-        <div className="border border-line bg-surface/40">
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line px-6 py-5 lg:px-8">
-            <h3 className="font-sans text-eyebrow uppercase text-bone">
-              {t.assets.board.title}
-            </h3>
-            <span
-              aria-hidden="true"
-              className="h-1 w-1 rounded-full bg-champagne animate-pulse-dot"
-            />
-          </div>
-
-          <table className="w-full border-collapse text-left">
-            <thead>
-              <tr className="border-b border-line">
-                <th scope="col" className="px-6 py-4 eyebrow font-normal lg:px-8">
-                  {t.assets.board.pair}
-                </th>
-                <th scope="col" className="px-6 py-4 eyebrow text-right font-normal lg:px-8">
-                  {t.assets.board.rate}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {PRIMARY_PAIRS.map(([from, to]) => (
-                <tr key={`${from}${to}`} className="border-b border-line last:border-b-0">
-                  <th
-                    scope="row"
-                    className="px-6 py-5 font-sans text-sm font-normal tracking-wider2 text-bone lg:px-8"
-                  >
-                    {from} / {to}
-                  </th>
-                  <td className="tnum px-6 py-5 text-right font-sans text-sm text-ash lg:px-8">
-                    1 {from} = {formatRate(getRate(rates, from, to), locale)} {to}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <p className="mt-5 max-w-prose2 font-sans text-xs leading-relaxed text-ash">
-          {t.assets.board.note}
-        </p>
-      </Reveal>
     </section>
   );
 }
 
-/** The reciprocal-quote mark that sits on the seam between two asset cards. */
+/** The reciprocal-quote mark that sits on the seam between two cards. */
 function ExchangeMark({ className, delay = 0 }: { className?: string; delay?: number }) {
   const reduced = useReducedMotion();
 

@@ -114,11 +114,6 @@ export function formatAmount(
   }).format(Number.isFinite(value) ? value : 0);
 }
 
-/** Exchange rates are shown to four decimal places throughout. */
-export function formatRate(value: number, locale: Locale): string {
-  return formatAmount(value, locale, 4);
-}
-
 /** Compact form used for large figures inside dense UI. */
 export function formatInteger(value: number, locale: Locale): string {
   return formatAmount(value, locale, 0);

@@ -8,7 +8,7 @@ import {
   useState,
   type ReactNode,
 } from 'react';
-import type { CurrencyCode } from '@/lib/rates';
+import type { CurrencyCode } from '@/lib/currencies';
 
 export type QuoteDraft = {
   have: CurrencyCode;

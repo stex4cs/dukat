@@ -1,14 +1,15 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
-import { CURRENCIES } from '@/lib/rates';
+import { CURRENCIES } from '@/lib/currencies';
 import { SECTION } from '@/lib/sections';
 import { useLocale } from '@/providers/locale';
 import { EASE_LUX } from '@/lib/utils';
 import { HeroVisual } from './HeroVisual';
-import { QuoteCalculator } from './QuoteCalculator';
+import { QuotePanel } from './QuotePanel';
 import { DisplayLines, Reveal } from './ui/Reveal';
 import { Cta } from './ui/Cta';
+import { TelegramCta } from './ui/TelegramCta';
 
 /**
  * Opening statement and the indicative quote widget.
@@ -52,9 +53,7 @@ export function Hero() {
           </Reveal>
 
           <Reveal delay={0.54} className="mt-11 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <Cta href={`#${SECTION.quote}`} magnetic>
-              {t.hero.ctaPrimary}
-            </Cta>
+            <TelegramCta label={t.common.telegram} />
             <Cta href={`#${SECTION.howItWorks}`} variant="secondary">
               {t.hero.ctaSecondary}
             </Cta>
@@ -88,21 +87,10 @@ export function Hero() {
           animate={reduced ? undefined : { opacity: 1, y: 0 }}
           transition={{ duration: 1.1, ease: EASE_LUX, delay: 0.3 }}
         >
-          <QuoteCalculator />
+          <QuotePanel />
         </motion.div>
       </div>
 
-      <div className="shell pointer-events-none relative mt-20 hidden lg:block">
-        <span className="flex items-center gap-4">
-          <span className="eyebrow">{t.hero.scrollHint}</span>
-          <motion.span
-            aria-hidden="true"
-            className="block h-px w-16 origin-left bg-line"
-            animate={reduced ? undefined : { scaleX: [0.2, 1, 0.2] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-          />
-        </span>
-      </div>
     </section>
   );
 }

@@ -4,6 +4,7 @@ import { SECTION } from '@/lib/sections';
 import { useLocale } from '@/providers/locale';
 import { DisplayLines, Reveal } from './ui/Reveal';
 import { Cta } from './ui/Cta';
+import { TelegramCta } from './ui/TelegramCta';
 
 /**
  * Closing statement. The only centred composition on the page, so it reads as
@@ -35,10 +36,8 @@ export function FinalCta() {
         </Reveal>
 
         <Reveal delay={0.34} className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
-          <Cta href={`#${SECTION.quote}`} magnetic>
-            {t.finalCta.primary}
-          </Cta>
-          <Cta href={`#${SECTION.contact}`} variant="secondary">
+          <TelegramCta label={t.common.telegram} size="large" />
+          <Cta href={`#${SECTION.quote}`} variant="secondary">
             {t.finalCta.secondary}
           </Cta>
         </Reveal>
