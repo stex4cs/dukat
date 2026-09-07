@@ -1,11 +1,14 @@
 import { locales, localeMeta, type Locale } from './i18n/config';
 
 /**
- * Canonical origin. Set NEXT_PUBLIC_SITE_URL in the deployment environment —
- * hreflang alternates, the sitemap and Open Graph tags all derive from it.
+ * Canonical origin for hreflang alternates, the sitemap, robots and Open
+ * Graph tags.
+ *
+ * Defaults to the live domain so a fresh deployment is already correct.
+ * NEXT_PUBLIC_SITE_URL overrides it — useful for a staging origin.
  */
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://dukat.example'
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://dukatdesk.com'
 ).replace(/\/$/, '');
 
 export function canonicalFor(locale: Locale, path = ''): string {

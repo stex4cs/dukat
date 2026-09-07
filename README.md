@@ -46,7 +46,7 @@ Copy `.env.example` to `.env.local`. Both are optional in development.
 
 | Variable | Purpose |
 | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Canonical origin for hreflang, sitemap and Open Graph. |
+| `NEXT_PUBLIC_SITE_URL` | Overrides the canonical origin. Production defaults to `https://dukatdesk.com`. |
 | `NEXT_PUBLIC_QUOTE_ENDPOINT` | Where the written form posts. Defaults to the bundled `/api/quote`. |
 
 ## Before going live
