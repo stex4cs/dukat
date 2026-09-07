@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --dk-bg: #0a0a09;
+    --dk-surface: #11110f;
+    --dk-surface-raised: #161613;
+    --dk-text: #f1eee6;
+    --dk-muted: #9b988f;
+    --dk-gold: #b89a5e;
+    --dk-line: rgba(255, 255, 255, 0.08);
+    --dk-header-h: 76px;
+    color-scheme: dark;
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --dk-header-h: 88px;
+    }
+  }
+
+  * {
+    border-color: var(--dk-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--dk-bg);
+    color: var(--dk-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'kern', 'liga', 'calt';
+    overflow-x: hidden;
+  }
+
+  /* Fine film grain. Fixed, non-interactive, barely perceptible. */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.032;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection {
+    background-color: rgba(184, 154, 94, 0.26);
+    color: var(--dk-text);
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--dk-gold);
+    outline-offset: 3px;
+  }
+
+  /* Anchored sections must clear the sticky header. */
+  [id] {
+    scroll-margin-top: calc(var(--dk-header-h) + 24px);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: rgba(155, 152, 143, 0.55);
+  }
+
+  /* Remove the number spinner: amounts are formatted, not stepped. */
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Horizontal shell shared by every section, so the vertical rhythm and the
+     left edge stay identical from the header down to the footer. */
+  .shell {
+    @apply mx-auto w-full max-w-shell px-6 sm:px-8 lg:px-12 xl:px-16;
+  }
+
+  .eyebrow {
+    @apply font-sans text-eyebrow uppercase text-ash;
+  }
+
+  .rule {
+    @apply h-px w-full bg-line;
+  }
+
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Editorial display headline defaults. */
+  .display {
+    @apply font-display font-normal leading-[0.94] tracking-tightest;
+  }
+
+  .link-underline {
+    @apply relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-champagne transition-transform duration-500 ease-lux;
+  }
+
+  .link-underline:hover::after,
+  .link-underline[data-active='true']::after {
+    @apply scale-x-100;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Masks a decorative element so it dissolves instead of ending on a hard
+     edge — used for grid lines and the hero geometry. */
+  .fade-edges {
+    -webkit-mask-image: radial-gradient(circle at center, #000 45%, transparent 78%);
+    mask-image: radial-gradient(circle at center, #000 45%, transparent 78%);
+  }
+
+  .fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
