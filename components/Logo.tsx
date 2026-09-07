@@ -14,7 +14,10 @@ export function Monogram({ className }: { className?: string }) {
       fill="none"
       aria-hidden="true"
       focusable="false"
-      className={cn('h-full w-full', className)}
+      /* No default width/height: every caller passes its own size, and a
+         `w-full` base would beat an `h-8 w-8` override — Tailwind resolves
+         conflicts by stylesheet order, not by order in the class string. */
+      className={cn('block', className)}
     >
       <path
         d="M13 7V33"

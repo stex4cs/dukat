@@ -28,8 +28,14 @@ type ButtonProps = SharedProps & {
   disabled?: boolean;
 };
 
+/*
+ * No `whitespace-nowrap`: the label is translated, and the longest of them
+ * ("Запросить частную котировку", "Privates Angebot anfragen") does not fit
+ * a phone-width form. Nowrap made the button push the whole document 10px
+ * wider instead of wrapping.
+ */
 const BASE =
-  'group relative inline-flex items-center justify-center gap-3 whitespace-nowrap px-7 py-4 font-sans text-[0.6875rem] uppercase tracking-widest2 transition-colors duration-500 ease-lux disabled:cursor-not-allowed disabled:opacity-50';
+  'group relative inline-flex items-center justify-center gap-3 text-balance px-6 py-4 text-center font-sans text-[0.6875rem] uppercase leading-relaxed tracking-widest2 transition-colors duration-500 ease-lux sm:px-7 disabled:cursor-not-allowed disabled:opacity-50';
 
 const VARIANTS: Record<Variant, string> = {
   primary: 'bg-bone text-ink hover:bg-white',

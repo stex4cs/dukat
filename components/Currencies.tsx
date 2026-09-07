@@ -3,7 +3,9 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import type { CurrencyCode } from '@/lib/currencies';
 import { SECTION } from '@/lib/sections';
+import { cn } from '@/lib/utils';
 import { useLocale } from '@/providers/locale';
+import { GlobeVisual } from './GlobeVisual';
 import { Reveal } from './ui/Reveal';
 import { SectionHeader } from './ui/SectionHeader';
 
@@ -24,7 +26,30 @@ export function Currencies() {
   );
 
   return (
-    <section id={SECTION.currencies} className="shell py-28 lg:py-40">
+    <section
+      id={SECTION.currencies}
+      className="relative overflow-hidden py-28 lg:py-40"
+    >
+      {/* Sits beside the heading, bleeding off the right edge. Kept faint and
+          behind the content: it is atmosphere, not an illustration. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+      >
+        <GlobeVisual
+          className={cn(
+            'absolute -right-[26%] -top-[4%] h-[24rem] w-[24rem] opacity-60',
+            'sm:-right-[18%] sm:h-[32rem] sm:w-[32rem]',
+            'lg:right-[-8%] lg:top-[-10%] lg:h-[46rem] lg:w-[46rem] lg:opacity-75',
+            // Softens the limb so the sphere reads as atmosphere rather than
+            // as a picture cropped by the section edge.
+            '[mask-image:radial-gradient(circle,black_62%,transparent_92%)]',
+            '[-webkit-mask-image:radial-gradient(circle,black_62%,transparent_92%)]',
+          )}
+        />
+      </div>
+
+      <div className="shell relative">
       <SectionHeader
         index="03"
         eyebrow={t.assets.eyebrow}
@@ -61,6 +86,7 @@ export function Currencies() {
 
         <ExchangeMark className="left-1/3" />
         <ExchangeMark className="left-2/3" delay={1.4} />
+        </div>
       </div>
     </section>
   );

@@ -28,6 +28,9 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    /* Guard against a decorative element bleeding past the viewport.
+       `clip` creates no scroll container, so sticky and fixed still work. */
+    overflow-x: clip;
   }
 
   body {
@@ -108,6 +111,31 @@
       transition-duration: 0.001ms !important;
       scroll-behavior: auto !important;
     }
+  }
+}
+
+@layer base {
+  /*
+   * Meridian sweep for the engraved globe.
+   *
+   * A meridian at longitude f projects to an ellipse of rx = R·|sin f|: edge
+   * on at the centre of the disc, full width at the limb. Phase-shifting one
+   * keyframe across several ellipses reads as rotation, with no JavaScript
+   * running per frame. Elements carry a static rx attribute too, so with
+   * animation off the globe stays a correctly drawn wireframe.
+   */
+  @keyframes dk-meridian {
+    0%,
+    100% {
+      rx: 220px;
+    }
+    50% {
+      rx: 0px;
+    }
+  }
+
+  .dk-meridian {
+    animation: dk-meridian 72s ease-in-out infinite;
   }
 }
 
