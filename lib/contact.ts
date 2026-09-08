@@ -17,7 +17,7 @@ export const CONTACT: {
   email: ContactPoint;
 } = {
   telegram: { label: `t.me/${TELEGRAM_USERNAME}`, href: TELEGRAM_URL },
-  email: { label: '[CONTACT EMAIL]', href: null },
+  email: { label: 'office@dukatdesk.com', href: 'mailto:office@dukatdesk.com' },
 };
 
 /** Year shown in the footer copyright line. */

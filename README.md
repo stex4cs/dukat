@@ -58,11 +58,7 @@ and uppercase, so one grep finds them all.
    `TELEGRAM_CHAT_ID` in the deployment environment (see below). Without
    them the endpoint answers 503 in production rather than accepting an
    enquiry it cannot deliver.
-2. **`lib/contact.ts`** — the footer email is still `[CONTACT EMAIL]`, the
-   only placeholder a visitor can see on the homepage. Set it, or drop the
-   row and leave Telegram as the single channel. Contact points render as
-   plain text until `href` is set, so no dead links ship in the meantime.
-3. **`app/[locale]/legal/[doc]/page.tsx`** — Terms, Privacy and Compliance
+2. **`app/[locale]/legal/[doc]/page.tsx`** — Terms, Privacy and Compliance
    are on-brand placeholder pages, excluded from indexing until real text
    lands. They are linked from the footer and the consent checkbox.
 
