@@ -260,13 +260,129 @@ const en = {
 
   legal: {
     back: 'Back to site',
-    notice: 'This page is a placeholder. Final wording is to be supplied by DUKAT.',
+    /*
+     * The place name is written into each translation rather than substituted
+     * in: Serbian and Russian put it in the genitive ("iz Dubaija", "из
+     * Дубая"), which no template can produce from a bare noun.
+     */
+    basedIn: 'DUKAT Private Desk is based in Dubai.',
     docs: {
-      terms: { title: 'Terms', body: '[TERMS OF SERVICE TO BE PROVIDED]' },
-      privacy: { title: 'Privacy', body: '[PRIVACY POLICY TO BE PROVIDED]' },
+      terms: {
+        title: 'Terms',
+        intro:
+          'These terms govern the use of this website. They are not a contract for any transaction — a transaction is agreed separately with the desk.',
+        sections: [
+          {
+            heading: 'What this website is',
+            body: [
+              'This website describes the services of DUKAT Private Desk. It is informational. Nothing published here is an offer, a solicitation, or investment, legal or tax advice.',
+            ],
+          },
+          {
+            heading: 'No published pricing',
+            body: [
+              'No exchange rates are published on this website. A price applies only once the desk confirms it for a specific transaction, and only for the period stated in that confirmation.',
+            ],
+          },
+          {
+            heading: 'Enquiries',
+            body: [
+              'Sending the quote form or writing to the desk on Telegram is an enquiry. It does not create a contract, reserve a price, or oblige DUKAT to enter into any transaction.',
+              'DUKAT may decline an enquiry without giving reasons.',
+            ],
+          },
+          {
+            heading: 'Eligibility',
+            body: [
+              'You are responsible for ensuring that using the desk is lawful for you where you are. Services are subject to eligibility, onboarding checks and applicable law.',
+            ],
+          },
+          {
+            heading: 'Risk',
+            body: [
+              'Transactions involving digital assets carry risk, including price movement between enquiry and settlement, and the fact that a transfer once made cannot be reversed. You act on your own judgement.',
+            ],
+          },
+          {
+            heading: 'Liability and changes',
+            body: [
+              'This website is provided as it stands. To the extent permitted by law, DUKAT is not liable for loss arising from reliance on information published here.',
+              'These terms may change. The version published at the time of your enquiry is the one that applies to it.',
+            ],
+          },
+        ],
+      },
+      privacy: {
+        title: 'Privacy',
+        intro:
+          'What happens to the information you give us through this website, described as plainly as we can put it.',
+        sections: [
+          {
+            heading: 'What we collect',
+            body: [
+              'Only what you enter in the quote form: the currencies and the amount, your name, your city and country, your preferred contact method and the contact details for it, and any message you add.',
+              'That is everything. There is no account, and nothing is collected in the background.',
+            ],
+          },
+          {
+            heading: 'What we do not collect',
+            body: [
+              'This website does not ask for identity documents, account numbers, wallet addresses or payment credentials, and you should not send them through it. Anything of that kind belongs in the onboarding process, directly with the desk.',
+              'There is no analytics, advertising or tracking on this site, and no third party is measuring your visit.',
+            ],
+          },
+          {
+            heading: 'Cookies',
+            body: [
+              'One cookie is used, and only if you choose a language: it remembers that choice so you are not sent to the wrong version on your next visit. Nothing else is stored in your browser.',
+            ],
+          },
+          {
+            heading: 'How your enquiry is handled',
+            body: [
+              'Your enquiry is delivered to the desk so that a representative can reply with a quote and the next steps. It also appears in the server log of our hosting provider, which is how a delivery failure would be noticed.',
+              'It is not sold, rented or shared for marketing, and it is not used to build a profile of you.',
+            ],
+          },
+          {
+            heading: 'Who else is involved',
+            body: [
+              'The website is hosted by Vercel Inc. Enquiries are delivered to the desk through the Telegram Bot API, operated by Telegram. Email you send to the desk is handled by our email provider. Each of them processes only what is needed to carry your message.',
+            ],
+          },
+          {
+            heading: 'How long, and your rights',
+            body: [
+              'Enquiries are kept for as long as is needed to respond to them and to meet record-keeping obligations, and are deleted after that.',
+              'You can ask what we hold about you, ask for it to be corrected, or ask for it to be deleted, by writing to the address below.',
+            ],
+          },
+        ],
+      },
       compliance: {
         title: 'Compliance',
-        body: '[COMPLIANCE POLICY TO BE PROVIDED]',
+        intro:
+          'The desk carries out checks before a transaction proceeds. This page explains when that happens and what it means for you.',
+        sections: [
+          {
+            heading: 'Onboarding checks',
+            body: [
+              'Before a transaction proceeds, DUKAT carries out the checks required by applicable law and by its own policies. What is needed in your case is communicated by the desk during the quote process, before you are asked for anything.',
+            ],
+          },
+          {
+            heading: 'Do not send documents through this website',
+            body: [
+              'The quote form is not a channel for identity documents, account details or payment credentials, and they are not requested there. Anything of that kind is handled directly with the desk once a transaction is being arranged.',
+            ],
+          },
+          {
+            heading: 'Declining a relationship',
+            body: [
+              'DUKAT may decline an enquiry, or discontinue a relationship, without giving reasons.',
+            ],
+          },
+        ],
       },
     },
   },

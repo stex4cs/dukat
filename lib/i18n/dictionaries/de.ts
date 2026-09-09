@@ -257,14 +257,124 @@ const de: Dictionary = {
 
   legal: {
     back: 'Zurück zur Website',
-    notice:
-      'Diese Seite ist ein Platzhalter. Der endgültige Wortlaut wird von DUKAT bereitgestellt.',
+    basedIn: 'DUKAT Private Desk ist in Dubai ansässig.',
     docs: {
-      terms: { title: 'Bedingungen', body: '[TERMS OF SERVICE TO BE PROVIDED]' },
-      privacy: { title: 'Datenschutz', body: '[PRIVACY POLICY TO BE PROVIDED]' },
+      terms: {
+        title: 'Bedingungen',
+        intro:
+          'Diese Bedingungen gelten für die Nutzung dieser Website. Sie sind kein Vertrag über eine Transaktion — diese wird gesondert mit dem Desk vereinbart.',
+        sections: [
+          {
+            heading: 'Was diese Website ist',
+            body: [
+              'Diese Website beschreibt die Leistungen von DUKAT Private Desk und dient der Information. Nichts hier Veröffentlichte ist ein Angebot, eine Aufforderung zur Abgabe eines Angebots oder eine Anlage-, Rechts- oder Steuerberatung.',
+            ],
+          },
+          {
+            heading: 'Keine veröffentlichten Kurse',
+            body: [
+              'Auf dieser Website werden keine Kurse veröffentlicht. Ein Kurs gilt erst, wenn der Desk ihn für eine konkrete Transaktion bestätigt, und nur für den in der Bestätigung genannten Zeitraum.',
+            ],
+          },
+          {
+            heading: 'Anfragen',
+            body: [
+              'Das Absenden des Formulars oder eine Nachricht an den Desk über Telegram ist eine Anfrage. Dadurch kommt kein Vertrag zustande, wird kein Kurs reserviert und ist DUKAT zu keiner Transaktion verpflichtet.',
+              'DUKAT kann eine Anfrage ohne Angabe von Gründen ablehnen.',
+            ],
+          },
+          {
+            heading: 'Eignung',
+            body: [
+              'Sie sind dafür verantwortlich, dass die Nutzung des Desks an Ihrem Aufenthaltsort für Sie rechtmäßig ist. Die Leistungen unterliegen Eignungskriterien, Prüfungen beim Onboarding und dem anwendbaren Recht.',
+            ],
+          },
+          {
+            heading: 'Risiko',
+            body: [
+              'Transaktionen mit digitalen Vermögenswerten sind mit Risiken verbunden, darunter Preisbewegungen zwischen Anfrage und Abwicklung sowie der Umstand, dass eine ausgeführte Übertragung nicht rückgängig gemacht werden kann. Sie entscheiden nach eigenem Ermessen.',
+            ],
+          },
+          {
+            heading: 'Haftung und Änderungen',
+            body: [
+              'Diese Website wird im vorliegenden Zustand bereitgestellt. Soweit gesetzlich zulässig, haftet DUKAT nicht für Schäden, die aus dem Vertrauen auf die hier veröffentlichten Informationen entstehen.',
+              'Diese Bedingungen können sich ändern. Für Ihre Anfrage gilt die zum Zeitpunkt der Absendung veröffentlichte Fassung.',
+            ],
+          },
+        ],
+      },
+      privacy: {
+        title: 'Datenschutz',
+        intro:
+          'Was mit den Angaben geschieht, die Sie uns über diese Website machen — so einfach formuliert, wie es geht.',
+        sections: [
+          {
+            heading: 'Was wir erheben',
+            body: [
+              'Nur das, was Sie in das Formular eintragen: Währungen und Betrag, Ihren Namen, Stadt und Land, den gewünschten Kontaktweg samt Kontaktdaten sowie eine Nachricht, falls Sie eine hinzufügen.',
+              'Das ist alles. Es gibt kein Konto, und im Hintergrund wird nichts erhoben.',
+            ],
+          },
+          {
+            heading: 'Was wir nicht erheben',
+            body: [
+              'Diese Website fragt keine Ausweisdokumente, Kontonummern, Wallet-Adressen oder Zahlungsdaten ab, und Sie sollten sie nicht darüber senden. All das gehört in das Onboarding, direkt mit dem Desk.',
+              'Auf dieser Website gibt es keine Analyse, keine Werbung und kein Tracking, und kein Dritter misst Ihren Besuch.',
+            ],
+          },
+          {
+            heading: 'Cookies',
+            body: [
+              'Es wird ein Cookie verwendet, und nur wenn Sie eine Sprache wählen: Es merkt sich diese Wahl, damit Sie beim nächsten Besuch nicht auf einer anderen Fassung landen. Sonst wird nichts in Ihrem Browser gespeichert.',
+            ],
+          },
+          {
+            heading: 'Wie Ihre Anfrage bearbeitet wird',
+            body: [
+              'Ihre Anfrage wird an den Desk übermittelt, damit ein Vertreter Ihnen mit einem Angebot und den nächsten Schritten antworten kann. Sie erscheint zudem im Server-Log unseres Hosting-Anbieters, woran ein Zustellfehler erkennbar wäre.',
+              'Sie wird nicht verkauft, vermietet oder zu Marketingzwecken weitergegeben, und es wird kein Profil von Ihnen erstellt.',
+            ],
+          },
+          {
+            heading: 'Wer sonst beteiligt ist',
+            body: [
+              'Die Website wird von Vercel Inc. gehostet. Anfragen werden über die Telegram Bot API zugestellt, betrieben von Telegram. E-Mails an den Desk verarbeitet unser E-Mail-Anbieter. Jeder von ihnen verarbeitet nur, was zur Übermittlung Ihrer Nachricht nötig ist.',
+            ],
+          },
+          {
+            heading: 'Speicherdauer und Ihre Rechte',
+            body: [
+              'Anfragen werden so lange aufbewahrt, wie es zur Beantwortung und zur Erfüllung von Aufbewahrungspflichten erforderlich ist, und danach gelöscht.',
+              'Sie können Auskunft darüber verlangen, welche Daten wir zu Ihnen haben, sowie deren Berichtigung oder Löschung — schreiben Sie an die unten genannte Adresse.',
+            ],
+          },
+        ],
+      },
       compliance: {
         title: 'Compliance',
-        body: '[COMPLIANCE POLICY TO BE PROVIDED]',
+        intro:
+          'Vor der Durchführung einer Transaktion führt der Desk Prüfungen durch. Diese Seite erklärt, wann das geschieht und was es für Sie bedeutet.',
+        sections: [
+          {
+            heading: 'Prüfungen beim Onboarding',
+            body: [
+              'Vor der Durchführung einer Transaktion führt DUKAT die nach anwendbarem Recht und nach eigenen Richtlinien erforderlichen Prüfungen durch. Was in Ihrem Fall nötig ist, teilt der Desk im Laufe des Angebotsprozesses mit, bevor etwas angefordert wird.',
+            ],
+          },
+          {
+            heading: 'Senden Sie keine Dokumente über diese Website',
+            body: [
+              'Das Anfrageformular ist kein Kanal für Ausweisdokumente, Kontodaten oder Zahlungsdaten, und dort wird auch nicht danach gefragt. All das wird direkt mit dem Desk geklärt, sobald eine Transaktion vereinbart wird.',
+            ],
+          },
+          {
+            heading: 'Ablehnung einer Geschäftsbeziehung',
+            body: [
+              'DUKAT kann eine Anfrage ablehnen oder eine Geschäftsbeziehung ohne Angabe von Gründen beenden.',
+            ],
+          },
+        ],
       },
     },
   },

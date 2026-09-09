@@ -58,9 +58,13 @@ and uppercase, so one grep finds them all.
    `TELEGRAM_CHAT_ID` in the deployment environment (see below). Without
    them the endpoint answers 503 in production rather than accepting an
    enquiry it cannot deliver.
-2. **`app/[locale]/legal/[doc]/page.tsx`** — Terms, Privacy and Compliance
-   are on-brand placeholder pages, excluded from indexing until real text
-   lands. They are linked from the footer and the consent checkbox.
+2. **Legal review.** Terms, Privacy and Compliance describe what the site
+   actually does — the fields the form collects, that the enquiry travels
+   over the Telegram Bot API, that there is no analytics and the only cookie
+   remembers a language. That makes them accurate, not vetted. The desk
+   serves markets where the GDPR applies, so have a lawyer read them, and
+   add the registered entity name and number beside the city in
+   `legal.basedIn` if a company exists.
 
 ## Search Console
 

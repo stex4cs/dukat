@@ -259,14 +259,124 @@ const sr: Dictionary = {
 
   legal: {
     back: 'Nazad na sajt',
-    notice:
-      'Ova stranica je rezervisano mesto. Konačan tekst dostavlja DUKAT.',
+    basedIn: 'DUKAT Privatni desk posluje iz Dubaija.',
     docs: {
-      terms: { title: 'Uslovi', body: '[TERMS OF SERVICE TO BE PROVIDED]' },
-      privacy: { title: 'Privatnost', body: '[PRIVACY POLICY TO BE PROVIDED]' },
+      terms: {
+        title: 'Uslovi',
+        intro:
+          'Ovi uslovi važe za korišćenje ovog sajta. Nisu ugovor o transakciji — transakcija se dogovara posebno sa deskom.',
+        sections: [
+          {
+            heading: 'Šta je ovaj sajt',
+            body: [
+              'Ovaj sajt predstavlja usluge DUKAT Privatnog deska. Informativnog je karaktera. Ništa što je ovde objavljeno nije ponuda, poziv na ponudu, niti investicioni, pravni ili poreski savet.',
+            ],
+          },
+          {
+            heading: 'Kurs se ne objavljuje',
+            body: [
+              'Na ovom sajtu se ne objavljuju kursevi. Kurs važi tek kada ga desk potvrdi za konkretnu transakciju, i to samo za rok naveden u toj potvrdi.',
+            ],
+          },
+          {
+            heading: 'Upiti',
+            body: [
+              'Slanje obrasca ili poruka desku na Telegramu jeste upit. Time se ne zaključuje ugovor, ne rezerviše kurs, niti se DUKAT obavezuje da uđe u bilo kakvu transakciju.',
+              'DUKAT može da odbije upit bez obrazloženja.',
+            ],
+          },
+          {
+            heading: 'Podobnost',
+            body: [
+              'Vi ste odgovorni da proverite da li je korišćenje deska zakonito za vas tamo gde se nalazite. Usluge zavise od uslova podobnosti, provera pri otvaranju odnosa i važećih propisa.',
+            ],
+          },
+          {
+            heading: 'Rizik',
+            body: [
+              'Transakcije digitalnom imovinom nose rizik, uključujući promenu cene između upita i realizacije, kao i to da se izvršen prenos ne može poništiti. Odlučujete po sopstvenoj proceni.',
+            ],
+          },
+          {
+            heading: 'Odgovornost i izmene',
+            body: [
+              'Sajt se pruža u zatečenom stanju. U meri u kojoj to zakon dozvoljava, DUKAT ne odgovara za štetu nastalu oslanjanjem na ovde objavljene informacije.',
+              'Ovi uslovi se mogu menjati. Na vaš upit se primenjuje verzija objavljena u trenutku slanja upita.',
+            ],
+          },
+        ],
+      },
+      privacy: {
+        title: 'Privatnost',
+        intro:
+          'Šta se dešava sa podacima koje nam ostavite preko ovog sajta, rečeno što jednostavnije možemo.',
+        sections: [
+          {
+            heading: 'Šta prikupljamo',
+            body: [
+              'Samo ono što unesete u obrazac za ponudu: valute i iznos, ime i prezime, grad i državu, željeni način kontakta i kontakt podatak za njega, i poruku ako je dodate.',
+              'To je sve. Nema naloga, i ništa se ne prikuplja u pozadini.',
+            ],
+          },
+          {
+            heading: 'Šta ne prikupljamo',
+            body: [
+              'Ovaj sajt ne traži lična dokumenta, brojeve računa, adrese novčanika ni podatke za plaćanje, i ne treba ih slati preko njega. Sve takvo pripada procesu otvaranja odnosa, direktno sa deskom.',
+              'Na sajtu nema analitike, oglašavanja ni praćenja, i nijedna treća strana ne meri vašu posetu.',
+            ],
+          },
+          {
+            heading: 'Kolačići',
+            body: [
+              'Koristi se jedan kolačić, i to samo ako izaberete jezik: pamti taj izbor da vas sledeći put ne odvede na pogrešnu verziju. Ništa drugo se ne čuva u vašem pregledaču.',
+            ],
+          },
+          {
+            heading: 'Kako se obrađuje vaš upit',
+            body: [
+              'Upit se prosleđuje desku da bi vam predstavnik odgovorio kursom i sledećim koracima. Pojavljuje se i u serverskom logu našeg hosting provajdera, po čemu bi se primetilo da isporuka nije uspela.',
+              'Ne prodaje se, ne iznajmljuje i ne deli u marketinške svrhe, niti se koristi za pravljenje vašeg profila.',
+            ],
+          },
+          {
+            heading: 'Ko je još uključen',
+            body: [
+              'Sajt hostuje Vercel Inc. Upiti se desku isporučuju preko Telegram Bot API-ja, koji vodi Telegram. Poštu koju pošaljete desku obrađuje naš mejl provajder. Svako od njih obrađuje samo ono što je potrebno da vaša poruka stigne.',
+            ],
+          },
+          {
+            heading: 'Rok čuvanja i vaša prava',
+            body: [
+              'Upiti se čuvaju onoliko koliko je potrebno da se na njih odgovori i da se ispune obaveze vođenja evidencije, a nakon toga se brišu.',
+              'Možete tražiti uvid u to šta o vama imamo, ispravku ili brisanje, pisanjem na adresu navedenu ispod.',
+            ],
+          },
+        ],
+      },
       compliance: {
         title: 'Usklađenost',
-        body: '[COMPLIANCE POLICY TO BE PROVIDED]',
+        intro:
+          'Desk sprovodi provere pre nego što transakcija krene. Ova stranica objašnjava kada se to dešava i šta znači za vas.',
+        sections: [
+          {
+            heading: 'Provere pri otvaranju odnosa',
+            body: [
+              'Pre nego što transakcija krene, DUKAT sprovodi provere koje nalažu važeći propisi i sopstvena pravila. Šta je potrebno u vašem slučaju, desk vam saopštava tokom dogovaranja ponude, pre nego što bilo šta zatraži.',
+            ],
+          },
+          {
+            heading: 'Ne šaljite dokumenta preko sajta',
+            body: [
+              'Obrazac za ponudu nije kanal za lična dokumenta, podatke o računima ni podatke za plaćanje, i tamo se oni ne traže. Sve takvo se rešava direktno sa deskom kada se transakcija dogovara.',
+            ],
+          },
+          {
+            heading: 'Odbijanje odnosa',
+            body: [
+              'DUKAT može da odbije upit ili prekine odnos bez obrazloženja.',
+            ],
+          },
+        ],
       },
     },
   },

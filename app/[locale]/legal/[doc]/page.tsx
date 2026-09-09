@@ -4,22 +4,26 @@ import { getDictionary } from '@/lib/i18n';
 import { defaultLocale, isLocale, locales, type Locale } from '@/lib/i18n/config';
 import { LEGAL_DOCS, type LegalDoc } from '@/lib/sections';
 import { alternatesFor, canonicalFor } from '@/lib/site';
+import { CONTACT } from '@/lib/contact';
 import { Monogram } from '@/components/Logo';
 
 /**
- * Placeholder legal pages.
+ * Terms, Privacy and Compliance.
  *
- * The footer and the consent checkbox link here, so the routes exist and are
- * on-brand rather than pointing at nothing. Each one states plainly that the
- * text is outstanding — no invented terms, privacy or compliance language.
+ * The text describes what this site actually does — the form collects those
+ * fields, the enquiry travels over the Telegram Bot API, there is no
+ * analytics and the only cookie remembers a language choice. It is short on
+ * purpose: a notice a visitor can read is worth more than one they cannot.
+ *
+ * It has not been reviewed by a lawyer, and the desk serves markets where the
+ * GDPR applies. Treat it as an accurate description of the system, not as a
+ * substitute for legal advice.
  */
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return locales.flatMap((locale) =>
-    LEGAL_DOCS.map((doc) => ({ locale, doc })),
-  );
+  return locales.flatMap((locale) => LEGAL_DOCS.map((doc) => ({ locale, doc })));
 }
 
 type Params = { params: Promise<{ locale: string; doc: string }> };
@@ -45,13 +49,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
   return {
     title: `${page.title} — DUKAT`,
-    description: t.legal.notice,
+    description: page.intro,
     alternates: {
       canonical: canonicalFor(locale, `/legal/${doc}`),
       languages: alternatesFor(`/legal/${doc}`),
     },
-    // Placeholders carry no value for search; index them once real text lands.
-    robots: { index: false, follow: true },
   };
 }
 
@@ -61,34 +63,67 @@ export default async function LegalPage({ params }: Params) {
   const page = t.legal.docs[doc];
 
   return (
-    <main id="main" className="shell flex min-h-[100svh] flex-col py-16 lg:py-20">
+    <main id="main" className="shell py-16 lg:py-20">
       <Link
         href={`/${locale}`}
-        className="inline-flex items-center gap-3 self-start font-sans text-micro uppercase text-ash transition-colors duration-500 hover:text-bone"
+        className="inline-flex items-center gap-3 font-sans text-micro uppercase text-ash transition-colors duration-500 hover:text-bone"
       >
         <span aria-hidden="true">&larr;</span>
         {t.legal.back}
       </Link>
 
-      <div className="flex flex-1 flex-col justify-center py-20">
+      <article className="mx-auto max-w-3xl py-20 lg:py-28">
         <Monogram className="h-10 w-10 text-champagne/50" />
 
-        <h1 className="display mt-12 text-[clamp(2.5rem,8vw,5rem)] uppercase text-bone">
+        <h1 className="display mt-12 text-[clamp(2.25rem,6vw,4rem)] uppercase text-bone">
           {page.title}
         </h1>
 
-        <p className="mt-10 font-sans text-sm tracking-wider2 text-bone">
-          {page.body}
+        <p className="mt-8 max-w-prose2 font-sans text-base leading-relaxed text-bone/80">
+          {page.intro}
         </p>
 
-        <p className="mt-6 max-w-prose2 font-sans text-xs leading-relaxed text-ash">
-          {t.legal.notice}
-        </p>
-      </div>
+        <div className="mt-16 space-y-12">
+          {page.sections.map((section, index) => (
+            <section key={section.heading}>
+              <h2 className="flex items-baseline gap-4">
+                <span className="font-sans text-micro tnum text-champagne">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <span className="font-display text-xl text-bone lg:text-2xl">
+                  {section.heading}
+                </span>
+              </h2>
+              {section.body.map((paragraph) => (
+                <p
+                  key={paragraph}
+                  className="mt-4 max-w-prose2 font-sans text-sm leading-relaxed text-ash"
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </section>
+          ))}
+        </div>
 
-      <p className="border-t border-line pt-8 font-sans text-xs leading-relaxed text-ash">
-        {t.footer.disclaimer}
-      </p>
+        <footer className="mt-20 border-t border-line pt-8">
+          <p className="font-sans text-sm text-bone">
+            {t.legal.basedIn}
+          </p>
+          <p className="mt-3 font-sans text-sm text-ash">
+            {CONTACT.email.href ? (
+              <a href={CONTACT.email.href} className="link-underline hover:text-bone">
+                {CONTACT.email.label}
+              </a>
+            ) : (
+              CONTACT.email.label
+            )}
+          </p>
+          <p className="mt-8 max-w-prose2 font-sans text-xs leading-relaxed text-ash">
+            {t.footer.disclaimer}
+          </p>
+        </footer>
+      </article>
     </main>
   );
 }
