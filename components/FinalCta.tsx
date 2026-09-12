@@ -3,8 +3,8 @@
 import { SECTION } from '@/lib/sections';
 import { useLocale } from '@/providers/locale';
 import { DisplayLines, Reveal } from './ui/Reveal';
-import { Cta } from './ui/Cta';
 import { TelegramCta } from './ui/TelegramCta';
+import { WhatsAppCta } from './ui/WhatsAppCta';
 
 /**
  * Closing statement. The only centred composition on the page, so it reads as
@@ -35,11 +35,17 @@ export function FinalCta() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.34} className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
-          <TelegramCta label={t.common.telegram} size="large" />
-          <Cta href={`#${SECTION.quote}`} variant="secondary">
+        <Reveal delay={0.34} className="mt-12 flex flex-col items-center">
+          <div className="flex w-full flex-col gap-4 sm:w-auto sm:flex-row sm:items-stretch">
+            <TelegramCta label={t.common.telegram} size="large" />
+            <WhatsAppCta ariaLabel={t.common.whatsappAria} size="large" />
+          </div>
+          <a
+            href={`#${SECTION.quote}`}
+            className="link-underline mt-8 font-sans text-micro uppercase text-ash transition-colors duration-400 ease-lux hover:text-bone"
+          >
             {t.finalCta.secondary}
-          </Cta>
+          </a>
         </Reveal>
       </div>
     </section>

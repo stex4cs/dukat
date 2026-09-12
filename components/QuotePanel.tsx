@@ -10,6 +10,7 @@ import { useQuoteDraft } from '@/providers/quote-draft';
 import { cn } from '@/lib/utils';
 import { CurrencySelect } from './ui/CurrencySelect';
 import { TelegramCta } from './ui/TelegramCta';
+import { WhatsAppCta } from './ui/WhatsAppCta';
 
 /**
  * Composes a quote request and opens it in Telegram.
@@ -120,6 +121,11 @@ export function QuotePanel({ className }: { className?: string }) {
         label={t.common.telegram}
         draft={draft}
         className="mt-7 w-full py-5"
+      />
+      <WhatsAppCta
+        ariaLabel={t.common.whatsappAria}
+        draft={draft}
+        className="mt-3 w-full"
       />
 
       <a

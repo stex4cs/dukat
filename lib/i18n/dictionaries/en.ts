@@ -30,6 +30,7 @@ const en = {
     menu: 'Menu',
     close: 'Close',
     telegram: 'Request on Telegram',
+    whatsappAria: 'Message the desk on WhatsApp',
     optional: 'Optional',
   },
 
@@ -252,6 +253,7 @@ const en = {
     // Order matches LEGAL_DOCS in lib/sections.ts.
     legalLabels: ['Terms', 'Privacy', 'Compliance'],
     telegram: 'Telegram',
+    whatsapp: 'WhatsApp',
     email: 'Email',
     rights: 'All rights reserved.',
     disclaimer:
@@ -348,6 +350,7 @@ const en = {
             heading: 'Who else is involved',
             body: [
               'The website is hosted by Vercel Inc. Enquiries are delivered to the desk through the Telegram Bot API, operated by Telegram. Email you send to the desk is handled by our email provider. Each of them processes only what is needed to carry your message.',
+              'If you write to the desk directly on Telegram or WhatsApp, that conversation is also subject to the messaging service’s own terms.',
             ],
           },
           {

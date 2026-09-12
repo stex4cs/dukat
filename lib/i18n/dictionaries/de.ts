@@ -25,6 +25,7 @@ const de: Dictionary = {
     menu: 'Menü',
     close: 'Schließen',
     telegram: 'Über Telegram anfragen',
+    whatsappAria: 'Dem Desk über WhatsApp schreiben',
     optional: 'Optional',
   },
 
@@ -249,6 +250,7 @@ const de: Dictionary = {
     navLabels: ['Private Desk', 'Währungen', 'Ablauf', 'FAQ', 'Kontakt'],
     legalLabels: ['Bedingungen', 'Datenschutz', 'Compliance'],
     telegram: 'Telegram',
+    whatsapp: 'WhatsApp',
     email: 'E-Mail',
     rights: 'Alle Rechte vorbehalten.',
     disclaimer:
@@ -340,6 +342,7 @@ const de: Dictionary = {
             heading: 'Wer sonst beteiligt ist',
             body: [
               'Die Website wird von Vercel Inc. gehostet. Anfragen werden über die Telegram Bot API zugestellt, betrieben von Telegram. E-Mails an den Desk verarbeitet unser E-Mail-Anbieter. Jeder von ihnen verarbeitet nur, was zur Übermittlung Ihrer Nachricht nötig ist.',
+              'Wenn Sie dem Desk direkt über Telegram oder WhatsApp schreiben, gelten für diese Unterhaltung zusätzlich die Bedingungen des jeweiligen Dienstes.',
             ],
           },
           {

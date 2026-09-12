@@ -34,6 +34,7 @@ const sr: Dictionary = {
     menu: 'Meni',
     close: 'Zatvorite',
     telegram: 'Pišite na Telegramu',
+    whatsappAria: 'Pišite desku preko WhatsApp-a',
     optional: 'Nije obavezno',
   },
 
@@ -251,6 +252,7 @@ const sr: Dictionary = {
     navLabels: ['Privatni desk', 'Valute', 'Kako radi', 'Pitanja', 'Kontakt'],
     legalLabels: ['Uslovi', 'Privatnost', 'Usklađenost'],
     telegram: 'Telegram',
+    whatsapp: 'WhatsApp',
     email: 'Imejl',
     rights: 'Sva prava zadržana.',
     disclaimer:
@@ -342,6 +344,7 @@ const sr: Dictionary = {
             heading: 'Ko je još uključen',
             body: [
               'Sajt hostuje Vercel Inc. Upiti se desku isporučuju preko Telegram Bot API-ja, koji vodi Telegram. Poštu koju pošaljete desku obrađuje naš mejl provajder. Svako od njih obrađuje samo ono što je potrebno da vaša poruka stigne.',
+              'Ako desku pišete direktno na Telegramu ili WhatsApp-u, na taj razgovor se primenjuju i uslovi same aplikacije.',
             ],
           },
           {

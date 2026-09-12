@@ -33,6 +33,7 @@ const ru: Dictionary = {
     menu: 'Меню',
     close: 'Закрыть',
     telegram: 'Написать в Telegram',
+    whatsappAria: 'Написать деску в WhatsApp',
     optional: 'Необязательно',
   },
 
@@ -256,6 +257,7 @@ const ru: Dictionary = {
     ],
     legalLabels: ['Условия', 'Конфиденциальность', 'Комплаенс'],
     telegram: 'Telegram',
+    whatsapp: 'WhatsApp',
     email: 'Почта',
     rights: 'Все права защищены.',
     disclaimer:
@@ -347,6 +349,7 @@ const ru: Dictionary = {
             heading: 'Кто ещё участвует',
             body: [
               'Сайт размещён у Vercel Inc. Запросы доставляются на деск через Telegram Bot API, который обслуживает Telegram. Почту, отправленную деску, обрабатывает наш почтовый провайдер. Каждый из них обрабатывает только то, что нужно для доставки вашего сообщения.',
+              'Если вы пишете деску напрямую в Telegram или WhatsApp, к этой переписке применяются и правила самого мессенджера.',
             ],
           },
           {

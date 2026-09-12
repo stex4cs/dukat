@@ -8,6 +8,7 @@ import { EASE_LUX } from '@/lib/utils';
 import { LanguageRow } from './LanguageSwitcher';
 import { Wordmark } from './Logo';
 import { TelegramCta } from './ui/TelegramCta';
+import { WhatsAppCta } from './ui/WhatsAppCta';
 
 /**
  * Full-height navigation panel for small screens.
@@ -136,7 +137,10 @@ export function MobileMenu({
           </nav>
 
           <div className="shrink-0 space-y-6 px-6 pb-10 sm:px-8">
-            <TelegramCta label={t.common.telegram} className="w-full py-5" />
+            <div className="space-y-3">
+              <TelegramCta label={t.common.telegram} className="w-full py-5" />
+              <WhatsAppCta ariaLabel={t.common.whatsappAria} className="w-full" />
+            </div>
             <div className="flex items-center justify-between">
               <span className="eyebrow">{t.common.language}</span>
               <LanguageRow onNavigate={onClose} />

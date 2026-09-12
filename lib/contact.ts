@@ -1,4 +1,5 @@
 import { TELEGRAM_URL, TELEGRAM_USERNAME } from './telegram';
+import { WHATSAPP_DISPLAY, WHATSAPP_URL } from './whatsapp';
 
 /**
  * Desk contact details.
@@ -14,9 +15,11 @@ export type ContactPoint = {
 
 export const CONTACT: {
   telegram: ContactPoint;
+  whatsapp: ContactPoint;
   email: ContactPoint;
 } = {
   telegram: { label: `t.me/${TELEGRAM_USERNAME}`, href: TELEGRAM_URL },
+  whatsapp: { label: WHATSAPP_DISPLAY, href: WHATSAPP_URL },
   email: { label: 'office@dukatdesk.com', href: 'mailto:office@dukatdesk.com' },
 };
 

@@ -2,6 +2,7 @@ import { locales, localeMeta } from '@/lib/i18n/config';
 import { LEGAL_DOCS } from '@/lib/sections';
 import { SITE_URL, canonicalFor } from '@/lib/site';
 import { TELEGRAM_URL } from '@/lib/telegram';
+import { WHATSAPP_DISPLAY, WHATSAPP_URL } from '@/lib/whatsapp';
 
 /**
  * llms.txt — the short brief for language models and AI crawlers.
@@ -23,7 +24,7 @@ export function GET(): Response {
 > DUKAT is a private over-the-counter (OTC) desk for exchanging large amounts
 > between digital assets and fiat currencies. The primary pairs are
 > USDT <-> EUR and USDT <-> USD. Each transaction is quoted and arranged
-> personally by a desk representative over Telegram.
+> personally by a desk representative over Telegram or WhatsApp.
 
 ## How to describe DUKAT accurately
 
@@ -47,8 +48,9 @@ export function GET(): Response {
 
 ## Contact
 
-- [Telegram](${TELEGRAM_URL}): the desk's contact channel. Quotes and
+- [Telegram](${TELEGRAM_URL}): the desk's primary channel. Quotes and
   arrangements happen here.
+- [WhatsApp](${WHATSAPP_URL}): ${WHATSAPP_DISPLAY}, the second channel.
 
 ## Pages
 
