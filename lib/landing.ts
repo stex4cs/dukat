@@ -66,6 +66,13 @@ export const LANDING_SR: Record<LandingSlug, LandingPage> = {
         ],
       },
       {
+        heading: 'Prodaja USDT-a',
+        body: [
+          'Najveći deo posla je prodaja USDT-a za gotovinu. Javite iznos, dobijete kurs za taj iznos, pa dogovaramo termin u Beogradu, Novom Sadu ili Nišu.',
+          'Koju mrežu koristimo dogovaramo pre transakcije, zajedno sa ostalim detaljima.',
+        ],
+      },
+      {
         heading: 'Koje kriptovalute i koji iznosi',
         body: [
           'Osnovno je USDT, uz isplatu u evrima ili dolarima. Za druge kriptovalute pitajte desk — gledamo od slučaja do slučaja.',
@@ -77,6 +84,10 @@ export const LANDING_SR: Record<LandingSlug, LandingPage> = {
       {
         q: 'Mogu li da prodam USDT za keš u Beogradu?',
         a: 'Da. Beograd je jedan od tri grada u kojima desk radi isplatu u gotovini, uz Novi Sad i Niš. Termin se dogovara unapred preko Telegrama ili WhatsApp-a.',
+      },
+      {
+        q: 'Kako da prodam USDT?',
+        a: 'Pišite desku na Telegram ili WhatsApp i recite iznos. Dobijate kurs za taj iznos, i ako vam odgovara, dogovaramo termin i mesto — isplata je u gotovini, na licu mesta.',
       },
       {
         q: 'Kako se određuje kurs?',
@@ -101,7 +112,7 @@ export const LANDING_SR: Record<LandingSlug, LandingPage> = {
         heading: 'Kako izgleda kupovina',
         body: [
           'Javite se na Telegram ili WhatsApp sa iznosom koji želite da kupite. Dobijate kurs za taj iznos i dogovaramo način uplate.',
-          'Uplata u gotovini ide u Beogradu, Novom Sadu ili Nišu, po dogovorenom terminu. Drugi načini se dogovaraju sa deskom pojedinačno.',
+          'Uplata u gotovini ide u Beogradu, Novom Sadu ili Nišu, po dogovorenom terminu. Za manje iznose moguć je i bankovni prenos — kripto šaljemo kada je uplata vidljiva.',
         ],
       },
       {
@@ -118,9 +129,10 @@ export const LANDING_SR: Record<LandingSlug, LandingPage> = {
         ],
       },
       {
-        heading: 'Koji iznosi',
+        heading: 'Koji iznosi i kako se plaća',
         body: [
-          'Desk radi sa većim iznosima koji se dogovaraju pojedinačno. Za male iznose postoje menjačnice i to je brže i vama i nama.',
+          'Veći iznosi idu uz isplatu u gotovini i dogovoren termin u jednom od tri grada.',
+          'Manji iznosi se rešavaju bankovnim prenosom, bez dolaska. Koji je način pogodniji za vaš iznos, dogovaramo u poruci.',
         ],
       },
     ],
@@ -128,6 +140,10 @@ export const LANDING_SR: Record<LandingSlug, LandingPage> = {
       {
         q: 'Mogu li da kupim USDT za keš?',
         a: 'Da, uz zakazan termin u Beogradu, Novom Sadu ili Nišu. Iznos i kurs se dogovaraju unapred preko Telegrama ili WhatsApp-a.',
+      },
+      {
+        q: 'Mogu li da uplatim na račun umesto u kešu?',
+        a: 'Za manje iznose može — uplatite bankovnim prenosom, a kripto šaljemo kada je uplata vidljiva. Veći iznosi idu uz isplatu u gotovini i dogovoren termin.',
       },
       {
         q: 'Da li je kurs isti kao na berzi?',
