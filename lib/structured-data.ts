@@ -1,7 +1,7 @@
 import type { Locale } from './i18n/config';
 import { locales, localeMeta } from './i18n/config';
 import type { Dictionary } from './i18n/dictionaries/en';
-import { CASH_CITIES } from './landing';
+import { CASH_CITIES_SCHEMA } from './landing';
 import { TELEGRAM_URL } from './telegram';
 import { WHATSAPP_DISPLAY, WHATSAPP_URL } from './whatsapp';
 import { SITE_URL, canonicalFor } from './site';
@@ -74,7 +74,7 @@ export function serviceSchema(name: string, description: string, url: string) {
     url,
     serviceType: 'Over-the-counter digital asset exchange',
     provider: { '@id': `${SITE_URL}/#organization` },
-    areaServed: CASH_CITIES.map((city) => ({ '@type': 'City', name: city })),
+    areaServed: CASH_CITIES_SCHEMA.map((city) => ({ '@type': 'City', name: city })),
     availableChannel: [
       { '@type': 'ServiceChannel', serviceUrl: TELEGRAM_URL },
       { '@type': 'ServiceChannel', serviceUrl: WHATSAPP_URL },

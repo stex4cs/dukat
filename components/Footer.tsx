@@ -5,7 +5,12 @@ import { CONTACT, COPYRIGHT_YEAR } from '@/lib/contact';
 import { FOOTER_NAV_TARGETS, LEGAL_DOCS, SECTION } from '@/lib/sections';
 import type { ContactPoint } from '@/lib/contact';
 import { useLocale } from '@/providers/locale';
-import { LANDING_SLUGS, LANDING_SR } from '@/lib/landing';
+import {
+  LANDING_CONTENT,
+  LANDING_KEYS,
+  LANDING_SLUG,
+  isLandingLocale,
+} from '@/lib/landing';
 import { LanguageRow } from './LanguageSwitcher';
 import { Wordmark } from './Logo';
 
@@ -38,15 +43,15 @@ export function Footer() {
             {/* Serbian search landing pages. Out of the main navigation on
                 purpose, but linked here so they are not orphans — Google
                 finds an unlinked page late and trusts it less. */}
-            {locale === 'sr' && (
+            {isLandingLocale(locale) && (
               <ul className="mt-3 space-y-3 border-t border-line pt-3">
-                {LANDING_SLUGS.map((slug) => (
-                  <li key={slug}>
+                {LANDING_KEYS.map((key) => (
+                  <li key={key}>
                     <Link
-                      href={`/sr/${slug}`}
+                      href={`/${locale}/${LANDING_SLUG[locale][key]}`}
                       className="link-underline font-sans text-sm text-ash transition-colors duration-400 ease-lux hover:text-bone"
                     >
-                      {LANDING_SR[slug].h1}
+                      {LANDING_CONTENT[locale][key].h1}
                     </Link>
                   </li>
                 ))}

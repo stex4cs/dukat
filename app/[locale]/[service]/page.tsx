@@ -3,9 +3,13 @@ import { notFound } from 'next/navigation';
 import { getDictionary } from '@/lib/i18n';
 import {
   CASH_CITIES,
-  LANDING_SLUGS,
-  LANDING_SR,
-  isLandingSlug,
+  LANDING_CONTENT,
+  LANDING_KEYS,
+  LANDING_LOCALES,
+  LANDING_SLUG,
+  isLandingLocale,
+  landingKeyFor,
+  type LandingLocale,
 } from '@/lib/landing';
 import { canonicalFor, SITE_URL } from '@/lib/site';
 import { faqSchemaFrom, jsonLd, serviceSchema } from '@/lib/structured-data';
@@ -27,39 +31,63 @@ import { WhatsAppCta } from '@/components/ui/WhatsAppCta';
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  // Serbian only: these target Serbian search terms and have no counterpart
-  // in the other locales.
-  return LANDING_SLUGS.map((service) => ({ locale: 'sr', service }));
+  // Only the locales that have landing pages — English and German do not.
+  return LANDING_LOCALES.flatMap((locale) =>
+    LANDING_KEYS.map((key) => ({ locale, service: LANDING_SLUG[locale][key] })),
+  );
+}
+
+/**
+ * The Serbian and Russian versions of a page are translations of each other,
+ * aimed at the same market. Declaring them as alternates keeps Google from
+ * reading them as two pages competing for one place.
+ */
+function alternatesForKey(key: (typeof LANDING_KEYS)[number]) {
+  return {
+    'sr-Latn': canonicalFor('sr', `/${LANDING_SLUG.sr[key]}`),
+    ru: canonicalFor('ru', `/${LANDING_SLUG.ru[key]}`),
+    'x-default': canonicalFor('sr', `/${LANDING_SLUG.sr[key]}`),
+  };
+}
+
+function resolve(locale: string, service: string) {
+  if (!isLandingLocale(locale)) return null;
+  const key = landingKeyFor(locale, service);
+  if (!key) return null;
+  return { locale: locale as LandingLocale, key, page: LANDING_CONTENT[locale][key] };
 }
 
 type Params = { params: Promise<{ locale: string; service: string }> };
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
-  const { service } = await params;
-  if (!isLandingSlug(service)) return {};
-  const page = LANDING_SR[service];
+  const { locale, service } = await params;
+  const found = resolve(locale, service);
+  if (!found) return {};
+  const { page } = found;
+  const url = canonicalFor(found.locale, `/${service}`);
 
   return {
     title: page.title,
     description: page.description,
-    alternates: { canonical: canonicalFor('sr', `/${service}`) },
+    alternates: { canonical: url, languages: alternatesForKey(found.key) },
     openGraph: {
       type: 'website',
       siteName: 'DUKAT',
       title: page.h1,
       description: page.description,
-      url: canonicalFor('sr', `/${service}`),
-      locale: 'sr_RS',
+      url,
+      locale: found.locale === 'sr' ? 'sr_RS' : 'ru_RU',
     },
   };
 }
 
 export default async function ServicePage({ params }: Params) {
   const { locale, service } = await params;
-  if (locale !== 'sr' || !isLandingSlug(service)) notFound();
+  const found = resolve(locale, service);
+  if (!found) notFound();
 
-  const page = LANDING_SR[service];
-  const t = getDictionary('sr');
+  const { page } = found;
+  const t = getDictionary(found.locale);
 
   return (
     <>
@@ -70,7 +98,7 @@ export default async function ServicePage({ params }: Params) {
             <Reveal>
               <p className="flex items-center gap-4">
                 <span aria-hidden="true" className="h-px w-8 bg-champagne/50" />
-                <span className="eyebrow">{CASH_CITIES.join(' · ')}</span>
+                <span className="eyebrow">{CASH_CITIES[found.locale].join(' · ')}</span>
               </p>
             </Reveal>
 
@@ -139,7 +167,7 @@ export default async function ServicePage({ params }: Params) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: jsonLd(serviceSchema(page.h1, page.description, `${SITE_URL}/sr/${service}`)),
+          __html: jsonLd(serviceSchema(page.h1, page.description, `${SITE_URL}/${found.locale}/${service}`)),
         }}
       />
       <script
