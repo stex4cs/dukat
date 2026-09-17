@@ -11,6 +11,9 @@ const de: Dictionary = {
     title: 'DUKAT — Private Desk',
     description:
       'DUKAT ist ein privater Desk für große Transaktionen mit digitalen Vermögenswerten. Tauschen Sie USDT, EUR und USD mit transparenten Angeboten und persönlicher Ausführung.',
+    /* Used for og:title and twitter:title, where the brand line reads
+     * better than a keyword-led page title. */
+    shareTitle: 'DUKAT — Private Desk',
     ogAlt: 'DUKAT — Private Desk',
   },
 

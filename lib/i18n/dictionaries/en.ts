@@ -16,6 +16,9 @@ const en = {
     title: 'DUKAT — Private Desk',
     description:
       'DUKAT is a private desk for large digital asset transactions. Exchange USDT, EUR and USD with transparent quotes and personal execution.',
+    /* Used for og:title and twitter:title, where the brand line reads
+     * better than a keyword-led page title. */
+    shareTitle: 'DUKAT — Private Desk',
     ogAlt: 'DUKAT — Private Desk',
   },
 

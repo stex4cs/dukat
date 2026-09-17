@@ -84,7 +84,7 @@ export async function generateMetadata({
     openGraph: {
       type: 'website',
       siteName: 'DUKAT',
-      title: t.meta.title,
+      title: t.meta.shareTitle,
       description: t.meta.description,
       url: canonicalFor(locale),
       locale: localeMeta[locale].intl.replace('-', '_'),
@@ -94,7 +94,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: t.meta.title,
+      title: t.meta.shareTitle,
       description: t.meta.description,
     },
     robots: { index: true, follow: true },

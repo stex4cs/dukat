@@ -19,6 +19,9 @@ const ru: Dictionary = {
     title: 'DUKAT — Частный деск',
     description:
       'DUKAT — частный деск для крупных сделок с цифровыми активами. Обмен USDT, EUR и USD с прозрачной котировкой и личным исполнением.',
+    /* Used for og:title and twitter:title, where the brand line reads
+     * better than a keyword-led page title. */
+    shareTitle: 'DUKAT — Частный деск',
     ogAlt: 'DUKAT — Частный деск',
   },
 

@@ -17,9 +17,12 @@ import type { Dictionary } from './en';
  */
 const sr: Dictionary = {
   meta: {
-    title: 'DUKAT — Privatni desk',
+    title: 'Otkup i prodaja kriptovaluta — DUKAT Privatni desk',
     description:
-      'DUKAT je privatni desk za velike transakcije digitalnom imovinom. Zamena USDT, EUR i USD uz jasan kurs i realizaciju koju vodi čovek.',
+      'Otkup i prodaja kriptovaluta u većim iznosima — USDT, EUR, USD. Privatni desk za Srbiju i region. Kurs dogovaramo lično, bez provizije povrh kursa.',
+    /* Used for og:title and twitter:title, where the brand line reads
+     * better than a keyword-led page title. */
+    shareTitle: 'DUKAT — Privatni desk',
     ogAlt: 'DUKAT — Privatni desk',
   },
 
@@ -44,11 +47,11 @@ const sr: Dictionary = {
   },
 
   hero: {
-    eyebrow: 'Privatni desk za digitalnu imovinu',
+    eyebrow: 'Privatni desk za kriptovalute',
     headline: ['Privatna likvidnost.', 'Lično izvršenje.'],
-    lede: 'Privatni desk za velike transakcije digitalnom imovinom.',
+    lede: 'Otkup i prodaja kriptovaluta u većim iznosima.',
     body:
-      'Menjajte USDT, EUR i USD preko posvećenog deska — uz jasan kurs i realizaciju koju vodi čovek.',
+      'Otkup i prodaja USDT, EUR i USD preko posvećenog deska — uz jasan kurs i realizaciju koju vodi čovek.',
     ctaPrimary: 'Zatražite ponudu',
     ctaSecondary: 'Kako radi',
     assetsAria: 'Valute sa kojima desk radi',
@@ -218,6 +221,14 @@ const sr: Dictionary = {
       {
         q: 'Koje valute radite?',
         a: 'Desk radi sa USDT, EUR i USD; osnovni parovi su USDT ↔ EUR i USDT ↔ USD. Zahteve sa drugim valutama gledamo od slučaja do slučaja.',
+      },
+      {
+        q: 'Kako da prodam kriptovalute?',
+        a: 'Javite se desku na Telegramu ili popunite obrazac sa valutom i iznosom. Dobijate kurs za taj konkretan iznos, pa se dogovaraju detalji isplate. Desk radi i otkup i prodaju USDT-a, uz isplatu u evrima ili dolarima.',
+      },
+      {
+        q: 'Radite li otkup kriptovaluta u većim iznosima?',
+        a: 'Da, desk je namenjen upravo većim iznosima koji se kotiraju pojedinačno, a ne sitnim menjačkim transakcijama. Kurs se dogovara za konkretnu transakciju, ne uzima se sa liste, i u njemu je sve — nema provizije povrh kursa.',
       },
       {
         q: 'Šta naplaćujete?',
