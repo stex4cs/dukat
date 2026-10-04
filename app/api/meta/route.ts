@@ -46,7 +46,7 @@ export async function POST(request: Request): Promise<NextResponse> {
   const read = (name: string) =>
     cookies.match(new RegExp(`(?:^|; )${name}=([^;]+)`))?.[1] ?? null;
 
-  await sendMetaEvent(
+  const delivered = await sendMetaEvent(
     { eventName, eventId, eventSourceUrl: eventSourceUrl.slice(0, 500) },
     {
       clientIp: (request.headers.get('x-forwarded-for') ?? '').split(',')[0]?.trim() || null,
@@ -56,5 +56,8 @@ export async function POST(request: Request): Promise<NextResponse> {
     },
   );
 
-  return NextResponse.json({ ok: true }, { status: 202 });
+  // Report whether Meta actually accepted it, not merely that we tried.
+  // Answering 202 either way left no way to tell a working integration from a
+  // silently failing one without reading the server logs.
+  return NextResponse.json({ ok: true, delivered }, { status: 202 });
 }
