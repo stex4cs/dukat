@@ -138,6 +138,35 @@ message, which tells the visitor to contact the desk directly — the Telegram
 button is right there. The enquiry is also written to the platform log before
 delivery is attempted, so nothing is lost if Telegram is unreachable.
 
+## Analytics and consent
+
+Google Analytics and the Meta Pixel load **only after they are allowed**.
+Until then neither script is rendered, so nothing is requested from Google or
+Meta and no cookie of theirs is set. A tag that loads and then waits for
+consent has already done the thing consent was meant to permit.
+
+Who gets asked is decided by location, not language: `/api/geo` reads
+Vercel's `x-vercel-ip-country` and answers whether consent is required. The
+list lives in `lib/consent.ts` — the EEA plus the UK and Switzerland. Not
+Germany alone: Austria, Italy, Spain and Croatia are in the desk's own country
+list and under the same rule. Serbia's ZZPL asks for much the same thing; add
+`'RS'` to that set to cover it.
+
+Elsewhere the trackers run by default, and the Cookies link in the footer lets
+anyone opt out. A refusal is honoured everywhere, including where no banner
+was ever shown.
+
+The banner draws Accept and Decline identically, side by side. A refusal that
+is smaller, greyer or one click further away than acceptance is the specific
+pattern European regulators have fined over.
+
+The Pixel's `<noscript>` fallback image is deliberately not included: it fires
+on load with no way to respect a choice, and reports almost nothing.
+
+If any of this changes, the Cookies and "Who else is involved" sections of the
+privacy page have to change with it. They currently describe the behaviour
+exactly.
+
 ## AI assistants
 
 Two files describe the desk to language models and AI crawlers:

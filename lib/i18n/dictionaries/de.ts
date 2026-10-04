@@ -261,6 +261,16 @@ const de: Dictionary = {
       'Transaktionen mit digitalen Vermögenswerten sind mit Risiken verbunden. Hier werden keine Kurse veröffentlicht: den Preis nennt der Desk, und er gilt nur, wenn er für eine konkrete Transaktion ausdrücklich bestätigt wird. Die Leistungen unterliegen der Eignung, dem anwendbaren Recht sowie den Onboarding- und Compliance-Anforderungen von DUKAT.',
   },
 
+  consent: {
+    text:
+      'Wir verwenden Google Analytics und das Meta-Pixel, um zu sehen, wie die Website genutzt wird, und um unsere Werbung zu messen. Bis Sie wählen, wird nichts geladen.',
+    accept: 'Akzeptieren',
+    reject: 'Ablehnen',
+    policy: 'Datenschutz',
+    manage: 'Cookies',
+    aria: 'Cookie-Auswahl',
+  },
+
   legal: {
     back: 'Zurück zur Website',
     basedIn: 'DUKAT Private Desk ist in Dubai ansässig.',
@@ -326,13 +336,15 @@ const de: Dictionary = {
             heading: 'Was wir nicht erheben',
             body: [
               'Diese Website fragt keine Ausweisdokumente, Kontonummern, Wallet-Adressen oder Zahlungsdaten ab, und Sie sollten sie nicht darüber senden. All das gehört in das Onboarding, direkt mit dem Desk.',
-              'Auf dieser Website gibt es keine Analyse, keine Werbung und kein Tracking, und kein Dritter misst Ihren Besuch.',
+              'Wir kaufen und verkaufen keine personenbezogenen Daten, und nichts aus dem Formular wird für Werbung verwendet.',
             ],
           },
           {
             heading: 'Cookies',
             body: [
-              'Es wird ein Cookie verwendet, und nur wenn Sie eine Sprache wählen: Es merkt sich diese Wahl, damit Sie beim nächsten Besuch nicht auf einer anderen Fassung landen. Sonst wird nichts in Ihrem Browser gespeichert.',
+              'Ein Cookie merkt sich Ihre Sprache und wird nur gesetzt, wenn Sie sie ändern.',
+              'Wenn Sie zustimmen, werden zusätzlich Google Analytics und das Meta-Pixel geladen, damit wir sehen, wie die Website genutzt wird, und unsere Werbung messen können. Sie setzen eigene Cookies und übermitteln Daten an Google und Meta.',
+              'In der EU, dem Vereinigten Königreich und der Schweiz wird davon nichts geladen, bevor Sie zustimmen — kein Skript, kein Bild. Anderswo läuft es standardmäßig, und Sie können es jederzeit über den Link Cookies am Seitenende abschalten. Eine Ablehnung wird gespeichert und überall beachtet.',
             ],
           },
           {
@@ -347,6 +359,7 @@ const de: Dictionary = {
             body: [
               'Die Website wird von Vercel Inc. gehostet. Anfragen werden über die Telegram Bot API zugestellt, betrieben von Telegram. E-Mails an den Desk verarbeitet unser E-Mail-Anbieter. Jeder von ihnen verarbeitet nur, was zur Übermittlung Ihrer Nachricht nötig ist.',
               'Wenn Sie dem Desk direkt über Telegram oder WhatsApp schreiben, gelten für diese Unterhaltung zusätzlich die Bedingungen des jeweiligen Dienstes.',
+              'Wenn Sie Cookies für Analyse und Werbung akzeptieren, erhalten auch Google und Meta Daten über Ihren Besuch, jeweils zu ihren eigenen Bedingungen.',
             ],
           },
           {

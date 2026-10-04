@@ -11,6 +11,7 @@ import {
   LANDING_SLUG,
   isLandingLocale,
 } from '@/lib/landing';
+import { ConsentReopen } from './ConsentBanner';
 import { LanguageRow } from './LanguageSwitcher';
 import { Wordmark } from './Logo';
 
@@ -72,6 +73,9 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <ConsentReopen className="link-underline font-sans text-sm text-ash transition-colors duration-400 ease-lux hover:text-bone" />
+              </li>
             </ul>
           </nav>
 

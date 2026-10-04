@@ -271,6 +271,16 @@ const sr: Dictionary = {
       'Transakcije digitalnom imovinom nose rizik. Kurseve ne objavljujemo na sajtu: kurs daje desk i on važi samo kada je izričito potvrđen za konkretnu transakciju. Usluge zavise od uslova podobnosti, važećih propisa i zahteva DUKAT-a za otvaranje odnosa i usklađenost.',
   },
 
+  consent: {
+    text:
+      'Koristimo Google Analytics i Meta Pixel da bismo videli kako se sajt koristi i merili oglase. Ništa se ne učitava dok ne izaberete.',
+    accept: 'Prihvatam',
+    reject: 'Odbijam',
+    policy: 'Privatnost',
+    manage: 'Kolačići',
+    aria: 'Izbor kolačića',
+  },
+
   legal: {
     back: 'Nazad na sajt',
     basedIn: 'DUKAT Privatni desk posluje iz Dubaija.',
@@ -336,13 +346,15 @@ const sr: Dictionary = {
             heading: 'Šta ne prikupljamo',
             body: [
               'Ovaj sajt ne traži lična dokumenta, brojeve računa, adrese novčanika ni podatke za plaćanje, i ne treba ih slati preko njega. Sve takvo pripada procesu otvaranja odnosa, direktno sa deskom.',
-              'Na sajtu nema analitike, oglašavanja ni praćenja, i nijedna treća strana ne meri vašu posetu.',
+              'Lične podatke ne kupujemo i ne prodajemo, a ništa što unesete u obrazac ne koristi se za oglašavanje.',
             ],
           },
           {
             heading: 'Kolačići',
             body: [
-              'Koristi se jedan kolačić, i to samo ako izaberete jezik: pamti taj izbor da vas sledeći put ne odvede na pogrešnu verziju. Ništa drugo se ne čuva u vašem pregledaču.',
+              'Jedan kolačić pamti izbor jezika i postavlja se samo ako jezik promenite.',
+              'Ako prihvatite, učitavaju se i Google Analytics i Meta Pixel, da bismo videli kako se sajt koristi i merili oglase. Oni postavljaju svoje kolačiće i šalju podatke Google-u i Meti.',
+              'U EU, Velikoj Britaniji i Švajcarskoj se ništa od toga ne učitava dok ne prihvatite — ni skripta, ni slika. Drugde radi podrazumevano, a možete ga isključiti u svakom trenutku, preko linka Kolačići u dnu stranice. Odbijanje se pamti i poštuje svuda.',
             ],
           },
           {
@@ -357,6 +369,7 @@ const sr: Dictionary = {
             body: [
               'Sajt hostuje Vercel Inc. Upiti se desku isporučuju preko Telegram Bot API-ja, koji vodi Telegram. Poštu koju pošaljete desku obrađuje naš mejl provajder. Svako od njih obrađuje samo ono što je potrebno da vaša poruka stigne.',
               'Ako desku pišete direktno na Telegramu ili WhatsApp-u, na taj razgovor se primenjuju i uslovi same aplikacije.',
+              'Ako prihvatite kolačiće za analitiku i oglašavanje, podatke o vašoj poseti dobijaju i Google i Meta, svako pod svojim uslovima.',
             ],
           },
           {

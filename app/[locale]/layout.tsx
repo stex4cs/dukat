@@ -12,8 +12,11 @@ import {
 } from '@/lib/i18n/config';
 import { alternatesFor, canonicalFor, SITE_URL } from '@/lib/site';
 import { jsonLd, organizationSchema } from '@/lib/structured-data';
+import { ConsentProvider } from '@/providers/consent';
 import { LocaleProvider } from '@/providers/locale';
 import { QuoteDraftProvider } from '@/providers/quote-draft';
+import { Analytics } from '@/components/Analytics';
+import { ConsentBanner } from '@/components/ConsentBanner';
 
 /**
  * Root layout. The app has no /app/layout.tsx on purpose: the locale segment
@@ -125,7 +128,11 @@ export default async function LocaleLayout({
         </a>
 
         <LocaleProvider locale={locale} dictionary={dictionary}>
-          <QuoteDraftProvider>{children}</QuoteDraftProvider>
+          <ConsentProvider>
+            <QuoteDraftProvider>{children}</QuoteDraftProvider>
+            <ConsentBanner />
+            <Analytics />
+          </ConsentProvider>
         </LocaleProvider>
 
         <script

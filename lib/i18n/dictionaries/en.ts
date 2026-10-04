@@ -264,6 +264,16 @@ const en = {
       'Digital asset transactions involve risk. No rates are published here: a price is quoted by the desk and applies only when expressly confirmed for a specific transaction. Services are subject to eligibility, applicable law and DUKAT’s onboarding and compliance requirements.',
   },
 
+  consent: {
+    text:
+      'We use Google Analytics and the Meta Pixel to see how the site is used and to measure our advertising. Nothing loads until you choose.',
+    accept: 'Accept',
+    reject: 'Decline',
+    policy: 'Privacy',
+    manage: 'Cookies',
+    aria: 'Cookie choice',
+  },
+
   legal: {
     back: 'Back to site',
     /*
@@ -334,13 +344,15 @@ const en = {
             heading: 'What we do not collect',
             body: [
               'This website does not ask for identity documents, account numbers, wallet addresses or payment credentials, and you should not send them through it. Anything of that kind belongs in the onboarding process, directly with the desk.',
-              'There is no analytics, advertising or tracking on this site, and no third party is measuring your visit.',
+              'We do not buy or sell personal data, and nothing you enter in the form is used for advertising.',
             ],
           },
           {
             heading: 'Cookies',
             body: [
-              'One cookie is used, and only if you choose a language: it remembers that choice so you are not sent to the wrong version on your next visit. Nothing else is stored in your browser.',
+              'One cookie remembers your language, and is set only if you change it.',
+              'If you accept, Google Analytics and the Meta Pixel load as well, so we can see how the site is used and measure our advertising. They set their own cookies and send data to Google and Meta.',
+              'In the EU, the UK and Switzerland none of that loads before you accept — not a script, not an image. Elsewhere it runs by default, and you can switch it off at any time through the Cookies link at the foot of any page. A refusal is remembered and honoured everywhere.',
             ],
           },
           {
@@ -355,6 +367,7 @@ const en = {
             body: [
               'The website is hosted by Vercel Inc. Enquiries are delivered to the desk through the Telegram Bot API, operated by Telegram. Email you send to the desk is handled by our email provider. Each of them processes only what is needed to carry your message.',
               'If you write to the desk directly on Telegram or WhatsApp, that conversation is also subject to the messaging service’s own terms.',
+              'If you accept analytics and advertising cookies, Google and Meta also receive data about your visit, each under their own terms.',
             ],
           },
           {
