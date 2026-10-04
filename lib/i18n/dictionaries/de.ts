@@ -254,6 +254,7 @@ const de: Dictionary = {
     legalLabels: ['Bedingungen', 'Datenschutz', 'Compliance'],
     telegram: 'Telegram',
     whatsapp: 'WhatsApp',
+    instagram: 'Instagram',
     email: 'E-Mail',
     rights: 'Alle Rechte vorbehalten.',
     disclaimer:

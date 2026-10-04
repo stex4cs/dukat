@@ -257,6 +257,7 @@ const en = {
     legalLabels: ['Terms', 'Privacy', 'Compliance'],
     telegram: 'Telegram',
     whatsapp: 'WhatsApp',
+    instagram: 'Instagram',
     email: 'Email',
     rights: 'All rights reserved.',
     disclaimer:

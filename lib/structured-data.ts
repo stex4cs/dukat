@@ -2,6 +2,7 @@ import type { Locale } from './i18n/config';
 import { locales, localeMeta } from './i18n/config';
 import type { Dictionary } from './i18n/dictionaries/en';
 import { CASH_CITIES_SCHEMA } from './landing';
+import { INSTAGRAM_URL } from './instagram';
 import { TELEGRAM_URL } from './telegram';
 import { WHATSAPP_DISPLAY, WHATSAPP_URL } from './whatsapp';
 import { SITE_URL, canonicalFor } from './site';
@@ -24,7 +25,7 @@ export function organizationSchema(locale: Locale, t: Dictionary) {
     url: canonicalFor(locale),
     logo: `${SITE_URL}/favicon.svg`,
     description: t.meta.description,
-    sameAs: [TELEGRAM_URL, WHATSAPP_URL],
+    sameAs: [TELEGRAM_URL, WHATSAPP_URL, INSTAGRAM_URL],
     contactPoint: [
       {
         '@type': 'ContactPoint',

@@ -1,4 +1,5 @@
 import { TELEGRAM_URL, TELEGRAM_USERNAME } from './telegram';
+import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from './instagram';
 import { WHATSAPP_DISPLAY, WHATSAPP_URL } from './whatsapp';
 
 /**
@@ -17,10 +18,12 @@ export const CONTACT: {
   telegram: ContactPoint;
   whatsapp: ContactPoint;
   email: ContactPoint;
+  instagram: ContactPoint;
 } = {
   telegram: { label: `t.me/${TELEGRAM_USERNAME}`, href: TELEGRAM_URL },
   whatsapp: { label: WHATSAPP_DISPLAY, href: WHATSAPP_URL },
   email: { label: 'office@dukatdesk.com', href: 'mailto:office@dukatdesk.com' },
+  instagram: { label: `@${INSTAGRAM_HANDLE}`, href: INSTAGRAM_URL },
 };
 
 /** Year shown in the footer copyright line. */

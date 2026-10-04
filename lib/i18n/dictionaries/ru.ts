@@ -261,6 +261,7 @@ const ru: Dictionary = {
     legalLabels: ['Условия', 'Конфиденциальность', 'Комплаенс'],
     telegram: 'Telegram',
     whatsapp: 'WhatsApp',
+    instagram: 'Instagram',
     email: 'Почта',
     rights: 'Все права защищены.',
     disclaimer:

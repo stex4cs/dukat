@@ -87,6 +87,9 @@ export function Footer() {
               <li>
                 <ContactValue label={t.footer.email} point={CONTACT.email} />
               </li>
+              <li>
+                <ContactValue label={t.footer.instagram} point={CONTACT.instagram} />
+              </li>
             </ul>
           </div>
 

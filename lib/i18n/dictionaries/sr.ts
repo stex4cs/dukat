@@ -264,6 +264,7 @@ const sr: Dictionary = {
     legalLabels: ['Uslovi', 'Privatnost', 'Usklađenost'],
     telegram: 'Telegram',
     whatsapp: 'WhatsApp',
+    instagram: 'Instagram',
     email: 'Imejl',
     rights: 'Sva prava zadržana.',
     disclaimer:
