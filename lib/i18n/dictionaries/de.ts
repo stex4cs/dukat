@@ -360,6 +360,7 @@ const de: Dictionary = {
               'Die Website wird von Vercel Inc. gehostet. Anfragen werden über die Telegram Bot API zugestellt, betrieben von Telegram. E-Mails an den Desk verarbeitet unser E-Mail-Anbieter. Jeder von ihnen verarbeitet nur, was zur Übermittlung Ihrer Nachricht nötig ist.',
               'Wenn Sie dem Desk direkt über Telegram oder WhatsApp schreiben, gelten für diese Unterhaltung zusätzlich die Bedingungen des jeweiligen Dienstes.',
               'Wenn Sie Cookies für Analyse und Werbung akzeptieren, erhalten auch Google und Meta Daten über Ihren Besuch, jeweils zu ihren eigenen Bedingungen.',
+              'Meta erhält sie sowohl aus Ihrem Browser als auch von unserem Server. Der Server übermittelt Ihre IP-Adresse und die Browserkennung — niemals etwas, das Sie in das Formular eingegeben haben.',
             ],
           },
           {

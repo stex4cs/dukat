@@ -368,6 +368,7 @@ const en = {
               'The website is hosted by Vercel Inc. Enquiries are delivered to the desk through the Telegram Bot API, operated by Telegram. Email you send to the desk is handled by our email provider. Each of them processes only what is needed to carry your message.',
               'If you write to the desk directly on Telegram or WhatsApp, that conversation is also subject to the messaging service’s own terms.',
               'If you accept analytics and advertising cookies, Google and Meta also receive data about your visit, each under their own terms.',
+              'Meta receives it both from your browser and from our own server. What the server sends is your IP address and browser identification — never anything you typed into the form.',
             ],
           },
           {

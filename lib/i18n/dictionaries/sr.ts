@@ -370,6 +370,7 @@ const sr: Dictionary = {
               'Sajt hostuje Vercel Inc. Upiti se desku isporučuju preko Telegram Bot API-ja, koji vodi Telegram. Poštu koju pošaljete desku obrađuje naš mejl provajder. Svako od njih obrađuje samo ono što je potrebno da vaša poruka stigne.',
               'Ako desku pišete direktno na Telegramu ili WhatsApp-u, na taj razgovor se primenjuju i uslovi same aplikacije.',
               'Ako prihvatite kolačiće za analitiku i oglašavanje, podatke o vašoj poseti dobijaju i Google i Meta, svako pod svojim uslovima.',
+              'Meta to dobija i iz vašeg pregledača i sa našeg servera. Server šalje vašu IP adresu i oznaku pregledača — nikada ono što ste uneli u obrazac.',
             ],
           },
           {

@@ -18,6 +18,7 @@ import { amountToInput, formatAmount, formatAmountInput, parseAmountInput } from
 import { SECTION } from '@/lib/sections';
 import { useLocale } from '@/providers/locale';
 import { useQuoteDraft } from '@/providers/quote-draft';
+import { useTrack } from '@/lib/use-track';
 import { cn } from '@/lib/utils';
 import { CurrencySelect } from './ui/CurrencySelect';
 import { Listbox } from './ui/Listbox';
@@ -46,6 +47,7 @@ type FieldKey = 'pair' | 'size' | 'name' | 'city' | 'contact' | 'consent';
 export function QuoteForm() {
   const { locale, t } = useLocale();
   const { draft, revision } = useQuoteDraft();
+  const track = useTrack();
   const ids = useId();
 
   const [have, setHave] = useState<CurrencyCode>(draft.have);
@@ -144,6 +146,7 @@ export function QuoteForm() {
       { honeypot },
     );
 
+    if (result.ok) track('Lead');
     setStatus(result.ok ? 'sent' : 'error');
   }
 

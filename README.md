@@ -167,6 +167,33 @@ If any of this changes, the Cookies and "Who else is involved" sections of the
 privacy page have to change with it. They currently describe the behaviour
 exactly.
 
+## Meta Conversions API
+
+Events are sent twice: from the browser Pixel and from the server. The
+browser copy is lost to ad blockers and Safari's tracking prevention; the
+server copy is not. Both carry the same `event_id`, which is how Meta
+recognises them as one event rather than counting the click twice —
+verified in a browser, the ids match exactly.
+
+Set `META_CAPI_TOKEN` in the deployment environment. **No `NEXT_PUBLIC`
+prefix**: that would ship the token to every visitor. Unset means no
+server-side events are sent and the Pixel works alone.
+
+Events: `PageView`, `Contact` (a Telegram or WhatsApp click) and `Lead` (a
+sent quote form). `/api/meta` accepts no others.
+
+The server side is gated by the same consent as the Pixel, and the endpoint
+re-checks the cookie itself. Sending from the server while the browser tag is
+blocked would make the banner theatre — the data would reach Meta either way,
+just less visibly.
+
+**What is never sent: anything the visitor typed.** No name, no email, no
+phone, no amount. Hashed contact details would raise Meta's match quality, but
+the privacy page says enquiry details go to the desk, and a discreet desk
+handing its clients' contacts to an ad platform is the wrong trade whatever it
+does for attribution. The server adds only the IP address, user agent and the
+Pixel's own `_fbp` / `_fbc` cookies.
+
 ## AI assistants
 
 Two files describe the desk to language models and AI crawlers:

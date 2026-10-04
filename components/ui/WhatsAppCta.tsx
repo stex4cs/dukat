@@ -1,4 +1,7 @@
+'use client';
+
 import { whatsappLink } from '@/lib/whatsapp';
+import { useTrack } from '@/lib/use-track';
 import { cn } from '@/lib/utils';
 
 /**
@@ -21,12 +24,15 @@ export function WhatsAppCta({
   size?: 'default' | 'large';
   className?: string;
 }) {
+  const track = useTrack();
+
   return (
     <a
       href={whatsappLink(draft)}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={ariaLabel}
+      onClick={() => track('Contact')}
       className={cn(
         'group relative inline-flex items-center justify-center gap-3 border border-line font-sans uppercase tracking-widest2 text-bone transition-colors duration-500 ease-lux hover:border-champagne/55 hover:text-white',
         size === 'large' && 'px-10 py-6 text-xs sm:px-14 sm:py-7 sm:text-sm',

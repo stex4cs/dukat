@@ -3,6 +3,7 @@
 import { motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion';
 import type { PointerEvent } from 'react';
 import { telegramLink } from '@/lib/telegram';
+import { useTrack } from '@/lib/use-track';
 import { cn } from '@/lib/utils';
 
 /**
@@ -26,6 +27,7 @@ export function TelegramCta({
   className?: string;
 }) {
   const reduced = useReducedMotion();
+  const track = useTrack();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 260, damping: 24, mass: 0.35 });
@@ -44,6 +46,7 @@ export function TelegramCta({
       href={telegramLink(draft)}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => track('Contact')}
       style={magnetic ? { x: springX, y: springY } : undefined}
       onPointerMove={handlePointerMove}
       onPointerLeave={() => {
