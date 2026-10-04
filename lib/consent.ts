@@ -40,7 +40,7 @@ export function clearConsent(): void {
  * env var only exists to switch accounts without a code change. An empty id
  * means that tracker is never loaded at all.
  */
-export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? '';
+export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? 'G-P8J3RMJZ3X';
 
 export const META_PIXEL_ID =
   process.env.NEXT_PUBLIC_META_PIXEL_ID ?? '1648076870178255';
