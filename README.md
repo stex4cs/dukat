@@ -187,12 +187,21 @@ re-checks the cookie itself. Sending from the server while the browser tag is
 blocked would make the banner theatre — the data would reach Meta either way,
 just less visibly.
 
-**What is never sent: anything the visitor typed.** No name, no email, no
-phone, no amount. Hashed contact details would raise Meta's match quality, but
-the privacy page says enquiry details go to the desk, and a discreet desk
-handing its clients' contacts to an ad platform is the wrong trade whatever it
-does for attribution. The server adds only the IP address, user agent and the
-Pixel's own `_fbp` / `_fbc` cookies.
+**What is sent with a Lead:** the IP address, user agent, the Pixel's own
+`_fbp` / `_fbc` cookies, and a SHA-256 of the city and country the visitor
+picked. A hashed "beograd" / "rs" describes a city of a million people and
+identifies nobody, but it lifts Meta's match quality above IP alone.
+
+**What is never sent:** the name, the contact detail, the amount, the message.
+Hashing those would raise match quality further, and it was considered and
+declined: the privacy page says enquiry details go to the desk, and a discreet
+desk handing its clients' contacts to an ad platform is the wrong trade
+whatever it does for attribution. Changing that means changing the privacy
+page with it.
+
+The Lead's event id is generated in the browser, used for the Pixel call, and
+passed to `/api/quote`, which reports the server copy. One id, one conversion.
+No id means the visitor declined tracking, and then nothing is reported.
 
 ## AI assistants
 

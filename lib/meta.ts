@@ -41,6 +41,8 @@ export function isCapiConfigured(): boolean {
 export async function sendMetaEvent(
   event: MetaEvent,
   context: MetaContext,
+  /** Already-hashed identifiers, e.g. from hashedLocation(). */
+  extraUserData: Record<string, string> = {},
 ): Promise<boolean> {
   const token = process.env.META_CAPI_TOKEN;
   if (!token || !META_PIXEL_ID) return false;
@@ -50,6 +52,7 @@ export async function sendMetaEvent(
   if (context.userAgent) userData.client_user_agent = context.userAgent;
   if (context.fbp) userData.fbp = context.fbp;
   if (context.fbc) userData.fbc = context.fbc;
+  Object.assign(userData, extraUserData);
 
   try {
     const response = await fetch(
@@ -87,4 +90,49 @@ export async function sendMetaEvent(
     console.error('[dukat] meta capi threw', error);
     return false;
   }
+}
+
+/*
+ * Coarse location, hashed.
+ *
+ * Only the city and country the visitor picked themselves in the form. No
+ * name, no email, no phone, no amount, no message — those stay with the desk.
+ *
+ * Meta matches on SHA-256 digests, so the values never leave this server. A
+ * hashed "beograd" / "rs" describes a city of a million people and identifies
+ * nobody, but it still lifts Meta's match quality above IP alone.
+ *
+ * Normalisation has to follow Meta's rules exactly or the digest matches
+ * nothing: trimmed, lower-cased, spacing and punctuation removed.
+ */
+import { createHash } from 'node:crypto';
+import type { CountryCode } from './countries';
+
+function sha256(value: string): string {
+  return createHash('sha256').update(value, 'utf8').digest('hex');
+}
+
+function normaliseCity(value: string): string {
+  return value
+    .trim()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z]/g, '');
+}
+
+/** Returns Meta's user_data for a location, or an empty object if unusable. */
+export function hashedLocation(
+  city: string,
+  country: CountryCode,
+): Record<string, string> {
+  const out: Record<string, string> = {};
+
+  const ct = normaliseCity(city);
+  if (ct) out.ct = sha256(ct);
+
+  // OTHER is not a country, so there is nothing meaningful to hash.
+  if (country !== 'OTHER') out.country = sha256(country.toLowerCase());
+
+  return out;
 }

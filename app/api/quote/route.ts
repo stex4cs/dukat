@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { parseQuoteRequest } from '@/lib/quote';
 import { isTelegramConfigured, notifyTelegram } from '@/lib/notify-telegram';
+import { CONSENT_COOKIE } from '@/lib/consent';
+import { hashedLocation, isCapiConfigured, sendMetaEvent } from '@/lib/meta';
 
 /**
  * Receives private quote enquiries from the site.
@@ -47,9 +49,47 @@ function rateLimited(key: string): boolean {
   return entry.count > MAX_PER_WINDOW;
 }
 
+/**
+ * Reports the enquiry to Meta as a Lead.
+ *
+ * It carries the city and country the visitor chose, hashed — nothing else.
+ * The name, the contact detail, the amount and the message stay with the desk;
+ * they are the reason someone uses a private desk rather than a form.
+ *
+ * Skipped entirely where tracking was declined, and where the browser sent no
+ * event id, which is how it says the visitor is not being tracked.
+ */
+async function reportLead(
+  quote: ReturnType<typeof parseQuoteRequest> & object,
+  request: Request,
+  cookies: string,
+): Promise<void> {
+  if (!quote.eventId || !isCapiConfigured()) return;
+  if (new RegExp(`${CONSENT_COOKIE}=denied`).test(cookies)) return;
+
+  const read = (name: string) =>
+    cookies.match(new RegExp(`(?:^|; )${name}=([^;]+)`))?.[1] ?? null;
+
+  await sendMetaEvent(
+    {
+      eventName: 'Lead',
+      eventId: quote.eventId,
+      eventSourceUrl: request.headers.get('referer') ?? '',
+    },
+    {
+      clientIp: (request.headers.get('x-forwarded-for') ?? '').split(',')[0]?.trim() || null,
+      userAgent: request.headers.get('user-agent'),
+      fbp: read('_fbp'),
+      fbc: read('_fbc'),
+    },
+    hashedLocation(quote.city, quote.country),
+  );
+}
+
 export async function POST(request: Request): Promise<NextResponse> {
   const forwarded = request.headers.get('x-forwarded-for') ?? '';
   const client = forwarded.split(',')[0]?.trim() || 'unknown';
+  const cookies = request.headers.get('cookie') ?? '';
 
   if (rateLimited(client)) {
     return NextResponse.json(
@@ -109,7 +149,14 @@ export async function POST(request: Request): Promise<NextResponse> {
     return NextResponse.json({ ok: true }, { status: 202 });
   }
 
-  const delivered = await notifyTelegram(quote);
+  // The desk notification decides the response. The Lead event is
+  // best-effort and runs alongside it, so a slow advertising API never delays
+  // the person waiting on the form.
+  const [delivered] = await Promise.all([
+    notifyTelegram(quote),
+    reportLead(quote, request, cookies),
+  ]);
+
   if (!delivered) {
     return NextResponse.json(
       { ok: false, error: 'delivery_failed' },

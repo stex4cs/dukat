@@ -30,6 +30,11 @@ export type QuoteRequest = {
   message?: string;
   /** Language the request was written in, so the desk can reply in kind. */
   locale: string;
+  /**
+   * Shared with the browser's own Lead event so Meta counts one conversion
+   * rather than two. Absent when the visitor declined tracking.
+   */
+  eventId?: string;
 };
 
 export type QuoteResponse = { ok: true } | { ok: false; error: string };
@@ -81,6 +86,11 @@ export function parseQuoteRequest(payload: unknown): QuoteRequest | null {
   if (typeof contact !== 'string' || contact.trim().length === 0) return null;
   if (method === 'email' && !isEmail(contact)) return null;
 
+  const eventId =
+    typeof body.eventId === 'string' && /^[A-Za-z0-9-]{8,64}$/.test(body.eventId)
+      ? body.eventId
+      : undefined;
+
   const message = typeof body.message === 'string' ? body.message.trim() : '';
   const locale = typeof body.locale === 'string' ? body.locale : 'en';
 
@@ -95,6 +105,7 @@ export function parseQuoteRequest(payload: unknown): QuoteRequest | null {
     contact: contact.trim().slice(0, 160),
     message: message ? message.slice(0, 2000) : undefined,
     locale: locale.slice(0, 12),
+    eventId,
   };
 }
 

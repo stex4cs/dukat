@@ -130,6 +130,13 @@ export function QuoteForm() {
     }
 
     setStatus('sending');
+
+    // Fire the browser half now and hand the same id to the server, which
+    // reports the Lead with the hashed location attached. One id, one
+    // conversion. Null when the visitor declined tracking, and then nothing
+    // is reported at all.
+    const eventId = track('Lead', { serverSide: false }) ?? undefined;
+
     const result = await submitQuoteRequest(
       {
         have,
@@ -142,11 +149,11 @@ export function QuoteForm() {
         contact: contact.trim(),
         message: message.trim() || undefined,
         locale,
+        eventId,
       },
       { honeypot },
     );
 
-    if (result.ok) track('Lead');
     setStatus(result.ok ? 'sent' : 'error');
   }
 
