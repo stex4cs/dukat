@@ -266,7 +266,7 @@ const en = {
 
   consent: {
     text:
-      'We use Google Analytics and the Meta Pixel to see how the site is used and to measure our advertising. Nothing loads until you choose.',
+      'We use Google Analytics, Google Ads and the Meta Pixel to see how the site is used and to measure our advertising. Nothing loads until you choose.',
     accept: 'Accept',
     reject: 'Decline',
     policy: 'Privacy',
@@ -351,7 +351,7 @@ const en = {
             heading: 'Cookies',
             body: [
               'One cookie remembers your language, and is set only if you change it.',
-              'If you accept, Google Analytics and the Meta Pixel load as well, so we can see how the site is used and measure our advertising. They set their own cookies and send data to Google and Meta.',
+              'If you accept, Google Analytics, Google Ads and the Meta Pixel load as well, so we can see how the site is used and measure our advertising. They set their own cookies and send data to Google and Meta.',
               'In the EU, the UK and Switzerland none of that loads before you accept — not a script, not an image. Elsewhere it runs by default, and you can switch it off at any time through the Cookies link at the foot of any page. A refusal is remembered and honoured everywhere.',
             ],
           },

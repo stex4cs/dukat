@@ -3,12 +3,13 @@
 import Script from 'next/script';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import { GA_ID, META_PIXEL_ID } from '@/lib/consent';
+import { GA_ID, GOOGLE_ADS_ID, META_PIXEL_ID } from '@/lib/consent';
 import { useConsent } from '@/providers/consent';
 import { useTrack } from '@/lib/use-track';
 
 /**
- * Google Analytics and the Meta Pixel, loaded only once they are allowed.
+ * Google Analytics, the Google Ads tag and the Meta Pixel, loaded only once
+ * they are allowed.
  *
  * Nothing is requested from Google or Meta until then — the <Script> tags
  * simply are not rendered, so no connection is opened and no cookie is set.
@@ -32,6 +33,12 @@ declare global {
     _fbq?: unknown;
   }
 }
+
+/**
+ * GA and Google Ads share one gtag.js; a second copy of the script would
+ * only be downloaded and ignored. Either id can load it.
+ */
+const GTAG_LOADER_ID = GA_ID || GOOGLE_ADS_ID;
 
 export function Analytics() {
   const { allowed } = useConsent();
@@ -68,17 +75,18 @@ export function Analytics() {
 
   return (
     <>
-      {GA_ID && (
+      {GTAG_LOADER_ID && (
         <>
           <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${GTAG_LOADER_ID}`}
             strategy="afterInteractive"
           />
           <Script id="ga-init" strategy="afterInteractive">
             {`window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments)}
-gtag('js',new Date());
-gtag('config','${GA_ID}',{anonymize_ip:true});`}
+gtag('js',new Date());${GA_ID ? `
+gtag('config','${GA_ID}',{anonymize_ip:true});` : ''}${GOOGLE_ADS_ID ? `
+gtag('config','${GOOGLE_ADS_ID}');` : ''}`}
           </Script>
         </>
       )}

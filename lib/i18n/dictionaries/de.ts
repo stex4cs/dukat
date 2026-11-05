@@ -263,7 +263,7 @@ const de: Dictionary = {
 
   consent: {
     text:
-      'Wir verwenden Google Analytics und das Meta-Pixel, um zu sehen, wie die Website genutzt wird, und um unsere Werbung zu messen. Bis Sie wählen, wird nichts geladen.',
+      'Wir verwenden Google Analytics, Google Ads und das Meta-Pixel, um zu sehen, wie die Website genutzt wird, und um unsere Werbung zu messen. Bis Sie wählen, wird nichts geladen.',
     accept: 'Akzeptieren',
     reject: 'Ablehnen',
     policy: 'Datenschutz',
@@ -343,7 +343,7 @@ const de: Dictionary = {
             heading: 'Cookies',
             body: [
               'Ein Cookie merkt sich Ihre Sprache und wird nur gesetzt, wenn Sie sie ändern.',
-              'Wenn Sie zustimmen, werden zusätzlich Google Analytics und das Meta-Pixel geladen, damit wir sehen, wie die Website genutzt wird, und unsere Werbung messen können. Sie setzen eigene Cookies und übermitteln Daten an Google und Meta.',
+              'Wenn Sie zustimmen, werden zusätzlich Google Analytics, Google Ads und das Meta-Pixel geladen, damit wir sehen, wie die Website genutzt wird, und unsere Werbung messen können. Sie setzen eigene Cookies und übermitteln Daten an Google und Meta.',
               'In der EU, dem Vereinigten Königreich und der Schweiz wird davon nichts geladen, bevor Sie zustimmen — kein Skript, kein Bild. Anderswo läuft es standardmäßig, und Sie können es jederzeit über den Link Cookies am Seitenende abschalten. Eine Ablehnung wird gespeichert und überall beachtet.',
             ],
           },

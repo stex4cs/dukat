@@ -140,7 +140,8 @@ delivery is attempted, so nothing is lost if Telegram is unreachable.
 
 ## Analytics and consent
 
-Google Analytics and the Meta Pixel load **only after they are allowed**.
+Google Analytics, the Google Ads tag and the Meta Pixel load **only after
+they are allowed**.
 Until then neither script is rendered, so nothing is requested from Google or
 Meta and no cookie of theirs is set. A tag that loads and then waits for
 consent has already done the thing consent was meant to permit.

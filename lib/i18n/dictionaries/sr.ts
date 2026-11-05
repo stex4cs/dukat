@@ -273,7 +273,7 @@ const sr: Dictionary = {
 
   consent: {
     text:
-      'Koristimo Google Analytics i Meta Pixel da bismo videli kako se sajt koristi i merili oglase. Ništa se ne učitava dok ne izaberete.',
+      'Koristimo Google Analytics, Google Ads i Meta Pixel da bismo videli kako se sajt koristi i merili oglase. Ništa se ne učitava dok ne izaberete.',
     accept: 'Prihvatam',
     reject: 'Odbijam',
     policy: 'Privatnost',
@@ -353,7 +353,7 @@ const sr: Dictionary = {
             heading: 'Kolačići',
             body: [
               'Jedan kolačić pamti izbor jezika i postavlja se samo ako jezik promenite.',
-              'Ako prihvatite, učitavaju se i Google Analytics i Meta Pixel, da bismo videli kako se sajt koristi i merili oglase. Oni postavljaju svoje kolačiće i šalju podatke Google-u i Meti.',
+              'Ako prihvatite, učitavaju se Google Analytics, Google Ads i Meta Pixel, da bismo videli kako se sajt koristi i merili oglase. Oni postavljaju svoje kolačiće i šalju podatke Google-u i Meti.',
               'U EU, Velikoj Britaniji i Švajcarskoj se ništa od toga ne učitava dok ne prihvatite — ni skripta, ni slika. Drugde radi podrazumevano, a možete ga isključiti u svakom trenutku, preko linka Kolačići u dnu stranice. Odbijanje se pamti i poštuje svuda.',
             ],
           },

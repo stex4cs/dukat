@@ -42,6 +42,10 @@ export function clearConsent(): void {
  */
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? 'G-P8J3RMJZ3X';
 
+/** Google Ads conversion tag. Shares gtag.js with GA, so no second script. */
+export const GOOGLE_ADS_ID =
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_ID ?? 'AW-18558617172';
+
 export const META_PIXEL_ID =
   process.env.NEXT_PUBLIC_META_PIXEL_ID ?? '1648076870178255';
 
