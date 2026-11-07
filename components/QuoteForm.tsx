@@ -18,7 +18,7 @@ import { amountToInput, formatAmount, formatAmountInput, parseAmountInput } from
 import { SECTION } from '@/lib/sections';
 import { useLocale } from '@/providers/locale';
 import { useQuoteDraft } from '@/providers/quote-draft';
-import { useTrack } from '@/lib/use-track';
+import { gaEvent, useTrack } from '@/lib/use-track';
 import { cn } from '@/lib/utils';
 import { CurrencySelect } from './ui/CurrencySelect';
 import { Listbox } from './ui/Listbox';
@@ -153,6 +153,10 @@ export function QuoteForm() {
       },
       { honeypot },
     );
+
+    // GA counts only requests that actually reached the desk; a failed send
+    // is not a lead.
+    if (result.ok) gaEvent('generate_lead', { contact_method: method });
 
     setStatus(result.ok ? 'sent' : 'error');
   }

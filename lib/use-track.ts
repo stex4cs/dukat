@@ -14,6 +14,23 @@ import { useConsent } from '@/providers/consent';
  */
 export type TrackableEvent = 'PageView' | 'Lead' | 'Contact';
 
+/**
+ * Sends one event to Google Analytics (and, through the shared gtag, to
+ * Google Ads). gtag only exists once consent allows it, so before that, or
+ * after a refusal, this does nothing.
+ *
+ * The names are GA's recommended ones (generate_lead, contact), which is what
+ * the key events on the property are defined against — renaming one here
+ * silently stops that conversion from counting.
+ */
+export function gaEvent(
+  name: 'generate_lead' | 'contact',
+  params: Record<string, string> = {},
+): void {
+  if (typeof window === 'undefined') return;
+  window.gtag?.('event', name, params);
+}
+
 export function useTrack() {
   const { allowed } = useConsent();
 
